@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@AccountMateWebOrder.Services.CompanyService.CompanyName - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+    <style>
+        a:hover {    
+            text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
+        <h5 class="my-0 mr-md-auto font-weight-normal">@Html.ActionLink("" + AccountMateWebOrder.Services.CompanyService.CompanyName + "", "Index", "Home", new { area = "" }, null)</h5>
+        <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+        </form>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" href="#">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</a>
+            <a class="p-2 text-dark" href="#">@Html.ActionLink("Cart ", "Index", "ShoppingCart", new { area = "" }, null)@Html.Partial("_NotificationsPartial")</a>
+            <a class="p-2 text-dark" href="#">Enterprise</a>
+        </nav>
+        <a class="btn btn-outline-primary" href="@Url.Action("Index", "Login")">LOGIN</a>
+    </div>
+    <div class="container body-content" style="padding-top: 80px">
+        @RenderBody()
+    </div>
+
+    <footer class="footer">
+        @*<p>&copy; @DateTime.Now.Year - Powered by AccountMate Software Inc.</p>*@
+
+        <div class="container bottom_border">
+            <div class="row">
+                <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+                    <h5 class="headin5_amrc col_white_amrc pt2">About us</h5>
+                    <p class="mb10">AccountMate offers unique accounting solutions for your growing business. You can gain a competitive edge with a unique, modified version of our ERP software. Learn more.</p>
+                    <p><i class="fa fa-location-arrow"></i> 1445 Technology Lane, Suite A5 Petaluma, CA 9495 </p>
+                    <p>
+                        <i class="fa fa-phone"></i> 
+                        +800 877-8896, 
+                        +707 774-7520
+                    </p>
+                    <p><i class="fa fa fa-envelope"></i> info@accountmate.com  </p>
+
+
+                </div>
+
+
+                <div class=" col-sm-4 col-md  col-6 col">
+                    <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+                    <ul class="footer_ul_amrc">
+                        <li><a href="http://google.com">AccountMate Forms Division</a></li>
+                        <li><a href="http://google.com">Customer Service</a></li>
+                        <li><a href="http://google.com">Technical Support for Licensed AccountMate Clients</a></li>
+                        <li><a href="http://google.com">Product information and all other Inquiries</a></li>
+                        <li><a href="http://google.com">Press Relations</a></li>
+                        <li><a href="http://google.com">Public Relations and Marketing</a></li>
+                    </ul>
+                </div>
+
+
+                <div class=" col-sm-4 col-md  col-6 col">
+                    <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+                    <ul class="footer_ul_amrc">
+                        <li><a href="http://google.com">Vertical Solutions Integrated with AccountMate Software</a></li>
+                        <li><a href="http://google.com">Case Studies</a></li>
+                        <li><a href="http://google.com">WebMaster, WebInquiries, Web-Related Support</a></li>
+                    </ul>
+                </div>
+
+
+                <div class=" col-sm-4 col-md  col-12 col">
+                    <h5 class="headin5_amrc col_white_amrc pt2">Testimonials</h5>
+
+                    <ul class="footer_ul2_amrc">
+                        <li><a href="#"><i class="fa fa-twitter fleft padding-right"></i> </a><p>We signed up as a resller 15 years ago...<a href="https://accountmate.com/Public/testimonialsbp.asp">https://accountmate.com</a></p></li>
+                        <li><a href="#"><i class="fa fa-twitter fleft padding-right"></i> </a><p>Since INFOtrac for AccountMate centralizes...<a href="https://accountmate.com/Public/testimonialsbp.asp">https://accountmate.com/</a></p></li>
+                        <li><a href="#"><i class="fa fa-twitter fleft padding-right"></i> </a><p>That package and the follow-up...<a href="https://accountmate.com/Public/testimonialsbp.asp">https://accountmate.com</a></p></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <ul class="foote_bottom_ul_amrc">
+                <li><a href="#">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</a></li>
+                <li><a href="#">@Html.ActionLink("Cart ", "Index", "ShoppingCart", new { area = "" }, null)</a></li>
+                <li><a href="#">Enterprise</a></li>
+            </ul>
+
+            <p>Copyright &copy; 2019 All Rights Reserved. AccountMate® Software Corporation.</p>
+
+            <ul class="social_footer_ul">
+                <li><a href="http://facebook.com"><i class="fa fa-facebook-f"></i></a></li>
+                <li><a href="http://twitter.com"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="http://linkedin.com"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="http://instagram.com"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+        </div>
+
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

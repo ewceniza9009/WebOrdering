@@ -1,0 +1,141 @@
+﻿@model AccountMateWebOrder.Models.Page.Pager
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .form-control-borderless {
+        border: none;
+    }
+
+    .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+
+    .form-control {
+        -webkit-box-shadow: inset 0 0px 0 rgba(0,0,0,0.075);
+        box-shadow: inset 0 0px 0 rgba(0,0,0,0.075);
+        background-color: white;
+    }
+    .card-body {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: .2rem;
+    }
+
+    .hr-no-border {
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+        border: 0;
+        border-top: 1px solid rgba(0,0,0,0.1);
+        max-width: 99%;
+    }
+
+    input, select, textarea {
+        max-width: 99%;
+    }
+</style>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <div class="row justify-content-center" style="padding-bottom: 5px;">
+        <div class="col-6">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col">
+                        @Html.TextBox("Search", ViewBag.search as string, new { @class = "form-control form-control-md form-control-borderless", type = "search", placeholder = "Search products" })
+                        <hr class="hr-no-border"/>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-md btn-primary" type="submit"><i class="fa fa-search">&nbsp; </i>Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-md-center">
+        <li class="page-item">
+            <a class="page-link" href="@Url.Action("Index", new { Page = Model.Page, Search = ViewBag.Search, Button = "prev" })" aria-label="Previous">
+                <span aria-hidden="true">Prev</span>
+            </a>
+        </li>
+        @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+        {
+            <li class="@(i == Model.Page ? "page-item active" : "page-item")">
+                <a class="page-link" href="@Url.Action("Index", new { Page = i, Search = ViewBag.Search })">@i</a>
+            </li>
+        }
+        <li class="page-item">
+            <a class="page-link" href="@Url.Action("Index", new { Page = Model.Page, Search = ViewBag.Search, Button = "next" })" aria-label="Next">
+                <span aria-hidden="true">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<div class="row">
+    @foreach (var prod in ViewBag.AllActiveInventories)
+    {
+        <div class="col-md-3">
+            <figure class="card card-product">
+                <div class="img-wrap">
+                    <img class="img-thumbnail no-border" src="@Url.Content("~/Content/Images/aerochair-a1.jpg")" />
+                    <a class="btn-overlay" href=""><i class="fa fa-search-plus"></i> Quick view</a>
+                </div>
+                <figcaption class="info-wrap">
+                    <h6 class="title text-dots"><a href="">@prod.ItemCode</a></h6>
+                    <div>@prod.Description</div>
+                    <div class="action-wrap">
+                        <a href="@Url.Action("Detail", "Home", new { id = prod.Id })" class="btn btn-primary btn-sm float-right"><i class="fa fa-plus"></i></a>
+                        <div class="price-wrap h5">
+                            <span class="price-new">$@string.Format("{0:N2}", prod.ListPrice)</span>
+
+                            @{
+                                Random rand = new Random();
+                                int limit = (int)prod.ListPrice;
+
+                                if (limit == 0)
+                                {
+                                    limit = 1;
+                                }
+
+                                decimal newLimit = (decimal)rand.Next(limit, limit + 50);
+                                string oldPrice = string.Format("{0:N2}", newLimit);
+
+                                <del class="price-old">$@oldPrice</del>
+                            }
+                        </div>
+                    </div>
+                </figcaption>
+            </figure>
+        </div>
+    }
+</div>
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-md-center">
+        <li class="page-item">
+            <a class="page-link" href="@Url.Action("Index", new { Page = Model.Page, Search = ViewBag.Search, Button = "prev" })" aria-label="Previous">
+                <span aria-hidden="true">Prev</span>
+            </a>
+        </li>
+        @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+        {
+            <li class="@(i == Model.Page ? "page-item active" : "page-item")">
+                <a class="page-link" href="@Url.Action("Index", new { Page = i, Search = ViewBag.Search })">@i</a>
+            </li>
+        }
+        <li class="page-item">
+            <a class="page-link" href="@Url.Action("Index", new { Page = Model.Page, Search = ViewBag.Search, Button = "next" })" aria-label="Next">
+                <span aria-hidden="true">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>

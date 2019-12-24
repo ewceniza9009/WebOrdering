@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AM.Sample.Co" Class="AMEntDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-VQRO7RO\SQL2K17_CSAS;Initial Catalog=AM.Sample.Co;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="AM_Sample_CoConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Inventory" Member="Inventories">
+    <Type Name="Inventory">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemCode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ShortDescription" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="InventoryTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="FixedCategory" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Barcode1" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Barcode2" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="UseInSOAR" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UseInPO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UseInMI" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsSerialized" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLotControlled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsKit" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UseAuthorizedUOM" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="StockUOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SaleUOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StorageUOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PurchaseUOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpecificationType1ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpecificationType2ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpecificationType3ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpecificationType4ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpecificationType5ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Decimal" DbType="Decimal(20,4) NOT NULL" CanBeNull="false" />
+      <Column Name="QtyDecimalPlaces" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="CostMethod" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="PreassignSerialNumber" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastSerialNumberUsed" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="PrintLotNumberOnInvoice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsCheckOnhand" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsUpdateOnhand" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UseKitNumber" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NextKitNumber" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="KitRequirePrebuild" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintKitNumberOnInvoice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsKitCustomizable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsPriceFromComponents" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsSpecification" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsUpsellBySpecification" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowNegativeOnhandQty" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowNegativePrice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwriteDescription" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwritePrice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwriteDiscount" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwriteTax" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwriteWeight" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwriteRevenueCode" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwriteCommission" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwriteInvcRemark" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowNegativeInvoiceQty" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwriteWORemark" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwritePORemark" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwriteRMARemark" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwriteSORemark" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintRemarkOnInvoice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintRemarkOnARPackSlip" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintRemarkOnSO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintRemarkOnSOPickList" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintRemarkOnSOPackSlip" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintRemarkOnPO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintRemarkOnWO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintRemarkOnRMA" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintRemarkOnRMAPickList" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TypeOfItem" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="UseAutomaticReturnCost" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AutomaticReturnCostType" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="MSRP" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemPriceGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CheckMinimumPriceOption" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="MinimumPriceType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="MinPricePctAboveCost" Type="System.Decimal" DbType="Decimal(20,4) NOT NULL" CanBeNull="false" />
+      <Column Name="MinPriceAmtAboveCost" Type="System.Decimal" DbType="Decimal(20,4) NOT NULL" CanBeNull="false" />
+      <Column Name="MaximumDiscountRate" Type="System.Decimal" DbType="Decimal(7,4) NOT NULL" CanBeNull="false" />
+      <Column Name="CommissionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RepairCharge" Type="System.Decimal" DbType="Decimal(20,4) NOT NULL" CanBeNull="false" />
+      <Column Name="MinimumRestockingAmount" Type="System.Decimal" DbType="Decimal(20,4) NOT NULL" CanBeNull="false" />
+      <Column Name="RestockingRate" Type="System.Decimal" DbType="Decimal(7,4) NOT NULL" CanBeNull="false" />
+      <Column Name="PrintSerialNumberOnInvoice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CheckLotMinimumShelfLife" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MinimumDaysToSellLot" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="MinimumDaysToUseLot" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="AllowDiscard" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowRepair" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsTaxable1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsTaxable2" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SalesTaxCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AmortizeRevenue" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AmortizationMethod" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="AmortizationFrequency" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="AmortizationCycles" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwriteRTVRemark" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintRemarkOnRTV" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintRemarkOnRTVPickList" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Inventory_InventoryImage" Member="InventoryImage" ThisKey="ID" OtherKey="ID" Type="InventoryImage" Cardinality="One" />
+      <Association Name="Inventory_InventoryPrice" Member="InventoryPrices" ThisKey="ID" OtherKey="InventoryID" Type="InventoryPrice" />
+      <Association Name="Inventory_InventoryWarehouse" Member="InventoryWarehouses" ThisKey="ID" OtherKey="InventoryID" Type="InventoryWarehouse" />
+      <Association Name="UnitOfMeasure_Inventory" Member="UnitOfMeasure" ThisKey="PurchaseUOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
+      <Association Name="UnitOfMeasure_Inventory1" Member="UnitOfMeasure1" ThisKey="SaleUOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
+      <Association Name="UnitOfMeasure_Inventory2" Member="UnitOfMeasure2" ThisKey="StockUOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
+      <Association Name="UnitOfMeasure_Inventory3" Member="UnitOfMeasure3" ThisKey="StorageUOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryImage" Member="InventoryImages">
+    <Type Name="InventoryImage">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="URL" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="IsAlwaysGrabFromURL" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Inventory_InventoryImage" Member="Inventory" ThisKey="ID" OtherKey="ID" Type="Inventory" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryListPrice" Member="InventoryListPrices">
+    <Type Name="InventoryListPrice">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InventoryPriceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ListPrice" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="InventoryPrice_InventoryListPrice" Member="InventoryPrice" ThisKey="InventoryPriceID" OtherKey="ID" Type="InventoryPrice" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryPrice" Member="InventoryPrices">
+    <Type Name="InventoryPrice">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InventoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InventorySpecID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UOMID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PriceDecimalPlaces" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="MinimumPrice" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerPriceGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PriceType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="InventoryPrice_InventoryListPrice" Member="InventoryListPrices" ThisKey="ID" OtherKey="InventoryPriceID" Type="InventoryListPrice" />
+      <Association Name="Inventory_InventoryPrice" Member="Inventory" ThisKey="InventoryID" OtherKey="ID" Type="Inventory" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="UnitOfMeasure_InventoryPrice" Member="UnitOfMeasure" ThisKey="UOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryWarehouse" Member="InventoryWarehouses">
+    <Type Name="InventoryWarehouse">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InventoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WarehouseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InventorySpecID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OnhandQty" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="AverageCost" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="SafetyStockQty" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="ReorderPoint" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="ReorderQty" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="ManufacturingLeadDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RevenueCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InventoryAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InTransitInventoryAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InterimInventoryAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InventoryVarianceAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CostVarianceAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractCostAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractObligationAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractDiscountAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrentCost" Type="System.Decimal" DbType="Decimal(20,6)" CanBeNull="true" />
+      <Column Name="StandardCost" Type="System.Decimal" DbType="Decimal(20,6)" CanBeNull="true" />
+      <Column Name="ReturnCost" Type="System.Decimal" DbType="Decimal(20,6)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Inventory_InventoryWarehouse" Member="Inventory" ThisKey="InventoryID" OtherKey="ID" Type="Inventory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerCode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="EntityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ResaleNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SalespersonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerClassID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerIndustryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TerritoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DefaultWarehouseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CommissionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PayCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Alias" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BillingAddressID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShippingAddressID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SalesTaxCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RevenueCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaxIdentification1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TaxIdentification2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SSN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ARAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerPriceGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UseLastSOPrice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ExpireLastPriceDays" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ShipViaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FOBID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearToDateStartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="LastYTDRecalcDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DiscountPercentage" Type="System.Decimal" DbType="Decimal(7,4) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditLimit" Type="System.Decimal" DbType="Decimal(20,4) NOT NULL" CanBeNull="false" />
+      <Column Name="AllowOverwriteRevenueCode" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ParentCustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShowNotepadFirstInTransaction" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RequireCustomerPO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CheckForDuplicateCustomerPO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UseCustomerItemNumber" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LimitItemSearchToCustomerItem" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintItemNumber" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GenerateInvoiceDuringShipment" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ApplyFinanceCharge" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrintStatement" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="StatementType" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="ConsolidateStatement" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryContactID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SaveCreditCard" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserRestrictionBits" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UseElectronicPayment" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OrderedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Customer_Customer" Member="Customers" ThisKey="ID" OtherKey="ParentCustomerID" Type="Customer" />
+      <Association Name="Customer_Customer" Member="Customer1" ThisKey="ParentCustomerID" OtherKey="ID" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UnitOfMeasure" Member="UnitOfMeasures">
+    <Type Name="UnitOfMeasure">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UOMCode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Symbol" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ShortDescription" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="UnitOfMeasure_Inventory" Member="Inventories" ThisKey="ID" OtherKey="PurchaseUOMID" Type="Inventory" />
+      <Association Name="UnitOfMeasure_Inventory1" Member="Inventories1" ThisKey="ID" OtherKey="SaleUOMID" Type="Inventory" />
+      <Association Name="UnitOfMeasure_Inventory2" Member="Inventories2" ThisKey="ID" OtherKey="StockUOMID" Type="Inventory" />
+      <Association Name="UnitOfMeasure_Inventory3" Member="Inventories3" ThisKey="ID" OtherKey="StorageUOMID" Type="Inventory" />
+      <Association Name="UnitOfMeasure_InventoryPrice" Member="InventoryPrices" ThisKey="ID" OtherKey="UOMID" Type="InventoryPrice" />
+    </Type>
+  </Table>
+</Database>

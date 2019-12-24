@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountMateWebOrder", "AccountMateWebOrder\AccountMateWebOrder.csproj", "{C2A3E6D2-61AB-4DEE-A41E-8C262A2CE3FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2A3E6D2-61AB-4DEE-A41E-8C262A2CE3FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2A3E6D2-61AB-4DEE-A41E-8C262A2CE3FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2A3E6D2-61AB-4DEE-A41E-8C262A2CE3FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2A3E6D2-61AB-4DEE-A41E-8C262A2CE3FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20815C51-00AA-4C07-B9C7-67F57FD75B72}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://amnet.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AccountMateWebOrder\\AccountMateWebOrder.csproj
+		SccProjectName1 = AccountMateWebOrder
+		SccLocalPath1 = AccountMateWebOrder
+	EndGlobalSection
+EndGlobal

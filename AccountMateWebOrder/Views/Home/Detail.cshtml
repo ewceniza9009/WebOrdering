@@ -1,0 +1,127 @@
+﻿@model AccountMateWebOrder.Models.Inventory
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var prod = ViewBag.Inventory as AccountMateWebOrder.Models.Inventory;
+}
+
+@using (Html.BeginForm("AddProduct", "ShoppingCart", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "There are some errors.", new { @class = "text-danger" });
+
+    <div class="card" style="margin-bottom: 20px">
+        <div class="row">
+            <aside class="col-sm-5 border-right">
+                <article class="gallery-wrap">
+                    <div class="img-fluid" style="padding-left: 5px; padding-top: 5px">
+                        <div> <a href="#"><img src="@prod.ImagePath" style="height: 430px;" class="img-fluid"></a></div>
+                    </div>
+                    <div class="img-small-wrap">
+                        <div class="item-gallery"> <img src="@prod.ImagePath"> </div>
+                        <div class="item-gallery"> <img src="@prod.ImagePath"> </div>
+                        <div class="item-gallery"> <img src="@prod.ImagePath"> </div>
+                        <div class="item-gallery"> <img src="@prod.ImagePath"> </div>
+                    </div>
+                </article>
+            </aside>
+            <aside class="col-sm-7">
+                <article class="card-body p-5">
+                    <h3 class="title mb-3">@prod.ItemCode</h3>
+
+                    <p class="price-detail-wrap">
+                        <span class="price h3 text-warning">
+                            <span class="currency" style="font-weight: 600;">$</span><span class="num" style="font-weight: 600;">@string.Format("{0:N2}", prod.ListPrice)</span>
+                        </span>
+                        <span>/@prod.UOfM</span>
+                    </p>
+                    <dl class="item-property">
+                        <dt>Description</dt>
+                        <dd>
+                            <p>
+                                @prod.Description
+                            </p>
+                        </dd>
+                    </dl>
+                    <dl class="param param-feature">
+                        <dt>Short Description</dt>
+                        <dd>@prod.ShortDescription</dd>
+                    </dl>
+                    <dl class="param param-feature">
+                        <dt>Color</dt>
+                        <dd>Black and white</dd>
+                    </dl>
+                    <dl class="param param-feature">
+                        <dt>Delivery</dt>
+                        <dd>Russia, USA, and Europe</dd>
+                    </dl>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <dl class="param param-inline">
+                                <dt>Quantity: </dt>
+                                <dd>
+                                    @Html.HiddenFor(m => m.Id, new { @value = prod.Id })
+                                    @Html.TextBoxFor(m => m.Quantity, new
+                                        {
+                                            id = "Quantity",
+                                            @class = "form-control form-control-sm",
+                                            type = "number",
+                                            step = "1",
+                                            max = "99",
+                                            min = "1",
+                                            title = "Quantity",
+                                            size = "4",
+                                            placeholder = "Qty"
+                                        })
+                                    @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "text-danger" })
+
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="col-sm-7">
+                            <dl class="param param-inline">
+                                <dt>Color: </dt>
+                                <dd>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option2">
+                                        <span class="form-check-label">Red</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <span class="form-check-label">Blue</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2">
+                                        <span class="form-check-label">Yellow</span>
+                                    </label>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-8">
+                            <a href="#" class="btn btn-md btn-primary text-uppercase"> Buy now </a>
+                            <a href="#" id="addToCart" class="btn btn-md btn-outline-primary text-uppercase"> <i class="fa fa-shopping-cart"></i> Add to cart </a>
+                        </div>
+                        <div class="col-4">
+                            <a href="@Url.Action("Index","Home")" class="btn btn-light pull-right" style="margin-top: 10px"><i class="fa fa-arrow-left"></i> Back</a>
+                        </div>   
+                   </div>
+                </article>
+            </aside>
+        </div>
+    </div>
+
+    @Html.Partial("_AddProduct", Model)
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $("#addToCart").on("click", function () {
+        $("#QtyDisplay").text($('#Quantity').val());
+        $('#addToCartConfirmation').modal('show');
+    });
+</script>

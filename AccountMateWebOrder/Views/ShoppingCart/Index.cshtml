@@ -1,0 +1,135 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    decimal totalPrice = 0;
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive">
+            <table class="table table-hover shopping-cart-wrap">
+                <thead class="text-body">
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col" width="120">Quantity</th>
+                        <th scope="col" width="120">Price</th>
+                        <th scope="col" width="200" class="text-right">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var prod in @AccountMateWebOrder.Services.ShoppingCartService.Cart)
+                    {
+                        <tr>
+                            <td>
+                                <figure class="media">
+                                    <div class="img-fluid"><img src="@prod.ImagePath" class="img-thumbnail img-sm no-border"></div>
+                                    <figcaption class="media-body">
+                                        <h6 class="title text-truncate">@prod.ProductName</h6>
+                                        <dl class="param param-inline media">
+                                            <dt>Size: </dt>
+                                            <dd>@prod.Size</dd>
+                                        </dl>
+                                        <dl class="param param-inline media">
+                                            <dt>Color: </dt>
+                                            <dd>@prod.Color</dd>
+                                        </dl>
+                                    </figcaption>
+                                </figure>
+                            </td>
+                            <td>
+                                <div class="quantity">
+                                    <input id="@string.Format("itemqty{0}", prod.CartId)"
+                                           type="number"
+                                           step="1"
+                                           max="99"
+                                           min="1"
+                                           value="@prod.Quantity"
+                                           title="Qty"
+                                           class="form-control form-control-sm"
+                                           size="4"
+                                           onchange="qty_onchange(@prod.CartId)">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="price-wrap h5">
+                                    <var class="price">$@string.Format("{0:N2}", prod.TotalPrice)</var>
+                                    <small class="text-muted">(USD each)</small>
+                                </div>
+                            </td>
+                            <td class="text-right">
+                                <a href="" title="Save to Wishlist" class="btn btn-outline-success" data-toggle="tooltip" data-original-title="Save to Wishlist"> <i class="fa fa-heart"></i></a>
+                                <a href="@Url.Action("RemoveProduct","ShoppingCart", new { @id = prod.CartId })" title="Remove"  class="btn btn-outline-danger"> <i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+
+                        totalPrice += prod.TotalPrice;
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" placeholder="Coupon code">
+                                </div>
+                                <div class="col-6">
+                                    <input type="submit" class="btn btn-outline-success" value="Use coupon">
+                                </div>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div class="pull-left" style="color:#ff851b; font-size: 18px; font-weight: bold;">
+                                $@string.Format("{0:N2}", totalPrice)
+                            </div>
+                        </td>
+                        <td class="text-right">
+                            <div class="pull-right">
+                                <a href="" class="btn btn-primary pull-right">Checkout <i class="fa fa-check"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-right">
+                            <div class="pull-right">
+                                <a href="@Url.Action("Index","Home")" class="btn btn-light pull-right">Continue shopping <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    function qty_onchange(cartId)
+    {
+        $.ajax({
+            url: "@Url.Action("EditProductLineItem","ShoppingCart")",
+            type: 'POST',
+            data:
+            {
+                id: cartId,
+                quantity: $("#itemqty" + cartId).val()
+            }
+        });
+
+        location.reload();
+    }
+
+    $(document).ready(function ()
+    {
+        //$(":input").bind('keyup mouseup', function (e) {
+        //    if (e.target.id == "itemqty")
+        //    {
+
+        //    }
+
+        //    //console.log(e.target.id)
+        //});
+    });
+</script>
