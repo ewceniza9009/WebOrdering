@@ -8,17 +8,18 @@
         border: none;
     }
 
-    .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
-        border: none;
-        outline: none;
-        box-shadow: none;
-    }
+        .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
 
     .form-control {
         -webkit-box-shadow: inset 0 0px 0 rgba(0,0,0,0.075);
         box-shadow: inset 0 0px 0 rgba(0,0,0,0.075);
         background-color: white;
     }
+
     .card-body {
         -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
@@ -48,7 +49,7 @@
                 <div class="card-body row no-gutters align-items-center">
                     <div class="col">
                         @Html.TextBox("Search", ViewBag.search as string, new { @class = "form-control form-control-md form-control-borderless", type = "search", placeholder = "Search products" })
-                        <hr class="hr-no-border"/>
+                        <hr class="hr-no-border" />
                     </div>
                     <div class="col-auto">
                         <button class="btn btn-md btn-primary" type="submit"><i class="fa fa-search">&nbsp; </i>Search</button>
@@ -86,14 +87,14 @@
         <div class="col-md-3">
             <figure class="card card-product">
                 <div class="img-wrap">
-                    <img class="img-thumbnail no-border" src="@Url.Content("~/Content/Images/aerochair-a1.jpg")" />
-                    <a class="btn-overlay" href=""><i class="fa fa-search-plus"></i> Quick view</a>
+                    <a href="@Url.Action("Detail", "Home", new { id = prod.Id })"><img class="img-thumbnail no-border" src="@Url.Content("~/Content/Images/aerochair-a1.jpg")" /></a>
+                    <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
                 </div>
                 <figcaption class="info-wrap">
                     <h6 class="title text-dots"><a href="">@prod.ItemCode</a></h6>
                     <div>@prod.Description</div>
                     <div class="action-wrap">
-                        <a href="@Url.Action("Detail", "Home", new { id = prod.Id })" class="btn btn-primary btn-sm float-right"><i class="fa fa-plus"></i></a>
+                        <a href="@Url.Action("Detail", "Home", new { id = prod.Id })" class="float-right"><i class="fa fa-hand-pointer-o"></i></a>
                         <div class="price-wrap h5">
                             <span class="price-new">$@string.Format("{0:N2}", prod.ListPrice)</span>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>@AccountMateWebOrder.Services.CompanyService.CompanyName - @ViewBag.Title</title>
+    <title>@ViewBag.Title - @AccountMateWebOrder.Services.CompanyService.CompanyName</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -13,14 +13,14 @@
     <script src="~/Scripts/jquery-3.4.1.js"></script>
 
     <style>
-        a:hover {    
-            text-decoration:none;
+        a:hover {
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
-        <h5 class="my-0 mr-md-auto font-weight-normal">@Html.ActionLink("" + AccountMateWebOrder.Services.CompanyService.CompanyName + "", "Index", "Home", new { area = "" }, null)</h5>
+        <h5 class="my-0 mr-md-auto font-weight-normal">@Html.ActionLink(AccountMateWebOrder.Services.CompanyService.CompanyName, "Index", "Home", new { area = "" }, null)</h5>
         <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
         </form>
@@ -45,8 +45,8 @@
                     <p class="mb10">AccountMate offers unique accounting solutions for your growing business. You can gain a competitive edge with a unique, modified version of our ERP software. Learn more.</p>
                     <p><i class="fa fa-location-arrow"></i> 1445 Technology Lane, Suite A5 Petaluma, CA 9495 </p>
                     <p>
-                        <i class="fa fa-phone"></i> 
-                        +800 877-8896, 
+                        <i class="fa fa-phone"></i>
+                        +800 877-8896,
                         +707 774-7520
                     </p>
                     <p><i class="fa fa fa-envelope"></i> info@accountmate.com  </p>

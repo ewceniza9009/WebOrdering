@@ -59,7 +59,7 @@
                             </td>
                             <td class="text-right">
                                 <a href="" title="Save to Wishlist" class="btn btn-outline-success" data-toggle="tooltip" data-original-title="Save to Wishlist"> <i class="fa fa-heart"></i></a>
-                                <a href="@Url.Action("RemoveProduct","ShoppingCart", new { @id = prod.CartId })" title="Remove"  class="btn btn-outline-danger"> <i class="fa fa-trash"></i></a>
+                                <a href="@Url.Action("RemoveProduct","ShoppingCart", new { @id = prod.CartId })" title="Remove" class="btn btn-outline-danger"> <i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
 
@@ -96,7 +96,7 @@
                         <td></td>
                         <td class="text-right">
                             <div class="pull-right">
-                                <a href="@Url.Action("Index","Home")" class="btn btn-light pull-right">Continue shopping <i class="fa fa-arrow-right"></i></a>
+                                <a href="@Url.Action("Index","Home")" class="btn btn-light pull-right">Continue shopping <i class="fa fa-arrow-left"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -117,18 +117,14 @@
                 quantity: $("#itemqty" + cartId).val()
             }
         });
-
         location.reload();
     }
-
     $(document).ready(function ()
     {
         //$(":input").bind('keyup mouseup', function (e) {
         //    if (e.target.id == "itemqty")
         //    {
-
         //    }
-
         //    //console.log(e.target.id)
         //});
     });
