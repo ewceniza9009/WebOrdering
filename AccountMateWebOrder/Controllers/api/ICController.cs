@@ -1,4 +1,4 @@
-﻿using IC.API;
+﻿//using IC.API;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +12,17 @@ namespace AccountMateWebOrder.Controllers.api
     {
         public IHttpActionResult Get()
         {
-            string sqlServerName = "DESKTOP-VQRO7RO\\SQL2K17_CSAS";
-            string dbName = "AM.Sample.Co";
+            //string sqlServerName = "DESKTOP-VQRO7RO\\SQL2K17_CSAS";
+            //string dbName = "AM.Sample.Co";
 
-            var inventory = Inventory.GetItem("AEROCHAIR-E1", sqlServerName, dbName);
+            //var inventory = Inventory.GetItem("AEROCHAIR-E1", sqlServerName, dbName);
 
-            if (inventory == null)
-                return NotFound();
+            //if (inventory == null)
+            //    return NotFound();
 
-            return Ok(inventory);
+            //return Ok(inventory);
+
+            return null;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace AccountMateWebOrder.Controllers
     {
         public ActionResult Index(Models.Page.Pager pagedModel)
         {
-            ViewBag.Search = Request.QueryString["Search"]??"".ToString();
+            ViewBag.Search = Request.QueryString["Search"] ?? "".ToString();
 
             var allActiveInventories = Services.InventoryService.GetAllActiveInventories(ViewBag.search, pagedModel);
             var inventoryCount = Services.InventoryService.AllActiveInventoriesCount;
@@ -16,20 +16,20 @@ namespace AccountMateWebOrder.Controllers
 
             if (pagedModel.Button == "next")
             {
-                if (Models.Page.PageNumber.InventoryCurrentPage <= (pagedModel.PageCount / pagedModel.PageRange))
+                if (Models.Page.PageNumber.Instance.InventoryCurrentPage <= (pagedModel.PageCount / pagedModel.PageRange))
                 {
-                    Models.Page.PageNumber.InventoryCurrentPage += 1;
-                }    
+                    Models.Page.PageNumber.Instance.InventoryCurrentPage += 1;
+                }
             }
-            else if(pagedModel.Button == "prev")
+            else if (pagedModel.Button == "prev")
             {
-                if (Models.Page.PageNumber.InventoryCurrentPage > 1) 
+                if (Models.Page.PageNumber.Instance.InventoryCurrentPage > 1)
                 {
-                    Models.Page.PageNumber.InventoryCurrentPage -= 1;
-                } 
+                    Models.Page.PageNumber.Instance.InventoryCurrentPage -= 1;
+                }
             }
 
-            pagedModel.EndPage = Models.Page.PageNumber.InventoryCurrentPage * pagedModel.PageRange;
+            pagedModel.EndPage = Models.Page.PageNumber.Instance.InventoryCurrentPage * pagedModel.PageRange;
 
             if (pagedModel.PageCount < pagedModel.EndPage && pagedModel.PageCount != 1) pagedModel.EndPage = (int)pagedModel.PageCount;
             if (pagedModel.PageCount < pagedModel.PageRange) pagedModel.EndPage = (int)pagedModel.PageCount;
@@ -43,7 +43,7 @@ namespace AccountMateWebOrder.Controllers
 
             return View(pagedModel);
         }
-        public ActionResult Detail(Models.Inventory model) 
+        public ActionResult Detail(Models.Inventory model)
         {
             if (model.from != "shoppingcart")
             {
@@ -54,7 +54,7 @@ namespace AccountMateWebOrder.Controllers
                     ModelState[key].Errors.Clear();
                 }
             }
-            else 
+            else
             {
                 model.Quantity = model.Quantity ?? null;
             }
