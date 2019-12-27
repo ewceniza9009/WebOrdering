@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 
 namespace AccountMateWebOrder.Controllers
 {
@@ -29,11 +30,22 @@ namespace AccountMateWebOrder.Controllers
             });
         }
 
-        public ActionResult EditProductLineItem(int id, int quantity) 
+        public JsonResult EditProductLineItem(int id, int quantity) 
         {
             Services.ShoppingCartService.EditItemOnShoppingCart(id, quantity);
+            var result = Services.ShoppingCartService.Cart.Find(x => x.CartId == id);
 
-            return RedirectToAction("Index");
+            var sumOfTotalPrice = 0m;
+
+            foreach (var x in Services.ShoppingCartService.Cart) 
+            {
+                sumOfTotalPrice += x.TotalPrice;
+            }
+
+            return Json(new { 
+                TotalPrice = result.TotalPrice,
+                SumOfTotalPrice = sumOfTotalPrice
+            }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult RemoveProduct(int id) 
@@ -43,9 +55,9 @@ namespace AccountMateWebOrder.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
         public ActionResult SaveCart() {
-
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

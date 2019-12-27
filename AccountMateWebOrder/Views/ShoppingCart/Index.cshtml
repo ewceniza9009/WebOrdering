@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-12">
             <div class="table-responsive">
-                <table class="table table-hover shopping-cart-wrap">
+                <table id="tblcart" class="table table-hover shopping-cart-wrap">
                     <thead class="text-body">
                         <tr>
                             <th scope="col">Product</th>
@@ -19,7 +19,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         @foreach (var prod in @AccountMateWebOrder.Services.ShoppingCartService.Cart)
                         {
                             <tr>
@@ -55,7 +54,7 @@
                                 </td>
                                 <td>
                                     <div class="price-wrap h5">
-                                        <var class="price">$@string.Format("{0:N2}", prod.TotalPrice)</var>
+                                        <var id="@string.Format("totalprice{0}", prod.CartId)" class="price">$@string.Format("{0:N2}", prod.TotalPrice)</var>
                                         <small class="text-muted">(USD each)</small>
                                     </div>
                                 </td>
@@ -82,13 +81,13 @@
                             </td>
                             <td></td>
                             <td>
-                                <div class="pull-left" style="color:#ff851b; font-size: 18px; font-weight: bold;">
+                                <div id="sumoftotalprice" class="pull-left" style="color:#ff851b; font-size: 18px; font-weight: bold;">
                                     $@string.Format("{0:N2}", totalPrice)
                                 </div>
                             </td>
                             <td class="text-right">
                                 <div class="pull-right">
-                                    <button type="submit" class="btn btn-primary pull-right">Checkout <i class="fa fa-check"></i></button>
+                                    <button id="btnsubmit" type="submit" class="btn btn-primary pull-right" disabled>Checkout <i class="fa fa-check"></i></button>
                                 </div>
                             </td>
                         </tr>
@@ -109,7 +108,6 @@
     </div>
 }
 
-
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/dirty.js"></script>
 <script>
@@ -122,17 +120,27 @@
             {
                 id: cartId,
                 quantity: $("#itemqty" + cartId).val()
+            },
+            success: function (data)
+            {
+                //("#btnsubmit").click();
+
+                document.getElementById("totalprice" + cartId).innerHTML = "$" + data.TotalPrice.toFixed(2);
+                document.getElementById("sumoftotalprice").innerHTML = "$" + data.SumOfTotalPrice.toFixed(2);
             }
         });
-        location.reload();
     }
-    $(document).ready(function ()
-    {
-        //$(":input").bind('keyup mouseup', function (e) {
-        //    if (e.target.id == "itemqty")
-        //    {
-        //    }
-        //    //console.log(e.target.id)
-        //});
-    });
+
+ //   $("form").dirrty({
+ //       preventLeaving: true,
+ //       leavingMessage: 'message'
+ //   })
+ //   .on("dirty", function () {
+	//	//$("#status").html("dirty");
+	//	$("#btnsubmit").removeAttr("disabled");
+	//}).on("clean", function(){
+	//	//$("#status").html("clean");
+	//	$("#btnsubmit").attr("disabled", "disabled");
+	//});
+
 </script>
