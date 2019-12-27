@@ -108,8 +108,8 @@
                         </div>
                         <div class="col-4">
                             <a href="@Url.Action("Index","Home")" class="btn btn-light pull-right" style="margin-top: 10px"><i class="fa fa-arrow-left"></i> Back</a>
-                        </div>   
-                   </div>
+                        </div>
+                    </div>
                 </article>
             </aside>
         </div>
@@ -119,9 +119,15 @@
 }
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/dirty.js"></script>
 <script>
     $("#addToCart").on("click", function () {
         $("#QtyDisplay").text($('#Quantity').val());
         $('#addToCartConfirmation').modal('show');
+    });
+
+    $("form").dirrty({
+        preventLeaving: true,
+        leavingMessage: 'message'
     });
 </script>

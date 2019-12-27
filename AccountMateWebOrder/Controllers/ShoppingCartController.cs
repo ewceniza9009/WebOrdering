@@ -42,5 +42,10 @@ namespace AccountMateWebOrder.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult SaveCart() {
+
+            return View();
+        }
     }
 }

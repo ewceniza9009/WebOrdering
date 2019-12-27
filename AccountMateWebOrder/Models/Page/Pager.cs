@@ -3,7 +3,7 @@
     public class Pager
     {
         public int Page { get; set; } = 1;
-        public int ItemsPerPage { get; set; } = 2;
+        public int ItemsPerPage { get; set; } = 8;
         public int PageRange { get; set; } = 5;
         public double PageCount { get; set; }      
         public int StartPage { get; set; }

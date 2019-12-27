@@ -322,6 +322,7 @@
     <None Include="Data\AMEnt.dbml.layout">
       <DependentUpon>AMEnt.dbml</DependentUpon>
     </None>
+    <Content Include="Scripts\dirty.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
