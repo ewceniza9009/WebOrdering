@@ -48,7 +48,7 @@
             <form class="card card-sm">
                 <div class="card-body row no-gutters align-items-center">
                     <div class="col">
-                        @Html.TextBox("Search", ViewBag.search as string, new { @class = "form-control form-control-md form-control-borderless", type = "search", placeholder = "Search products" })
+                        @Html.TextBox("Search", ViewBag.search as string, new { @class = "form-control form-control-md form-control-borderless", type = "search", placeholder = "Search products" , id="logo"})
                         <hr class="hr-no-border" />
                     </div>
                     <div class="col-auto">
@@ -60,7 +60,7 @@
     </div>
 }
 
-<nav aria-label="Page navigation">
+<nav aria-label="Page navigation" style="padding-top: 20px;">
     <ul class="pagination justify-content-md-center">
         <li class="page-item">
             <a class="page-link" href="@Url.Action("Index", new { Page = Model.Page, Search = ViewBag.Search, Button = "prev" })" aria-label="Previous">

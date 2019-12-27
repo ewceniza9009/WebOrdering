@@ -1,5 +1,6 @@
 ﻿body {
-    padding-bottom: 20px;
+    background: url('Images/b3.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 /* Set padding to keep content from hitting the edges */

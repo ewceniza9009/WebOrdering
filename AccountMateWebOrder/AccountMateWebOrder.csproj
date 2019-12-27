@@ -286,6 +286,9 @@
     <Content Include="Content\Images\aerochair-a1.jpg" />
     <Content Include="Content\Images\aerochair-a1.png" />
     <Content Include="Content\Images\avatar.png" />
+    <Content Include="Content\Images\b1.png" />
+    <Content Include="Content\Images\b2.png" />
+    <Content Include="Content\Images\b3.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
