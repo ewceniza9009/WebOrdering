@@ -20,20 +20,45 @@
     </style>
 </head>
 <body>
-    <div id="nav-bar" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
+    @*<div id="nav-bar" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
         <h5 id="logo" class="my-0 mr-md-auto font-weight-normal">@Html.ActionLink(AccountMateWebOrder.Services.CompanyService.CompanyName, "Index", "Home", new { area = "" }, null)</h5>
         <form class="form-inline mt-2 mt-md-0">
-            @* <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />*@
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
         </form>
         <nav class="my-2 my-md-0 mr-md-3" div id="navbar-right">
             <a class="p-2 text-dark" href="#">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</a>
             <a class="p-2 text-dark" href="#">@Html.ActionLink("Cart ", "Index", "ShoppingCart", new { area = "" }, null)@Html.Partial("_NotificationsPartial")</a>
-            @*<a class="p-2 text-dark" href="#">Enterprise</a>*@
+            <a class="p-2 text-dark" href="#">Enterprise</a>
             <a class="p-2 text-dark" href="#">@Html.ActionLink("Login", "Index", "Login")</a>
         </nav>
 
-    </div>
-    <div class="container body-content" style="padding-top: 80px; padding-bottom: 20px; margin-bottom:20px; border-radius: 0px 0px 15px 15px; background-color: rgba(21, 186, 91, 0.03)">
+    </div>*@
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <h5 id="logo" class="my-0 mr-md-auto font-weight-normal">@Html.ActionLink(AccountMateWebOrder.Services.CompanyService.CompanyName, "Index", "Home", new { area = "" }, null)</h5>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="@Url.Action("Index","Home")">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","ShoppingCart")">Cart @Html.Partial("_NotificationsPartial")</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Enterprise</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a class="p-2 text-dark" href="#">@Html.ActionLink("Login", "Index", "Login")</a>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container body-content" style="padding-top: 80px; padding-bottom: 20px; margin-bottom:20px; border-radius: 0px 0px 15px 15px; background-color: #f0f0f0;">
         @RenderBody()
     </div>
 
