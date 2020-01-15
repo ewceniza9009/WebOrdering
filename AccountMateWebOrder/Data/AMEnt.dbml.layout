@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.25, 20.75" name="AMEnt">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.625, 20.75" name="AMEnt">
   <DataContextMoniker Name="/AMEntDataContext" />
   <nestedChildShapes>
     <classShape Id="9801cadf-1e4a-4400-a53e-9762aabb15b0" absoluteBounds="2, 0.5, 2, 20.039532877604167">
@@ -79,39 +79,52 @@
         <elementListCompartment Id="881ed4a2-b59f-4231-9918-9271d18c6ccc" absoluteBounds="8.64, 4.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.625 : 5.24120198567708); (5.70833333333333 : 5.24120198567708 : JumpStart); (5.54166666666667 : 5.24120198567708 : JumpEnd); (4 : 5.24120198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.625 : 5.24120198567708); (5.70833333333333 : 5.24120198567708 : JumpStart); (5.54166666666667 : 5.24120198567708 : JumpEnd); (4 : 5.24120198567708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/AMEntDataContext/UnitOfMeasure/UnitOfMeasure_Inventory" />
       <nodes>
         <classShapeMoniker Id="ccae6c0d-aead-4724-a088-0ba4ac14a70f" />
         <classShapeMoniker Id="9801cadf-1e4a-4400-a53e-9762aabb15b0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.625 : 4.49560099283854); (4 : 4.49560099283854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.625 : 4.49560099283854); (4 : 4.49560099283854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/AMEntDataContext/UnitOfMeasure/UnitOfMeasure_Inventory1" />
       <nodes>
         <classShapeMoniker Id="ccae6c0d-aead-4724-a088-0ba4ac14a70f" />
         <classShapeMoniker Id="9801cadf-1e4a-4400-a53e-9762aabb15b0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.625 : 5.98680297851562); (5.70833333333333 : 5.98680297851562 : JumpStart); (5.54166666666667 : 5.98680297851562 : JumpEnd); (4 : 5.98680297851562)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.625 : 5.98680297851562); (4 : 5.98680297851562)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/AMEntDataContext/UnitOfMeasure/UnitOfMeasure_Inventory2" />
       <nodes>
         <classShapeMoniker Id="ccae6c0d-aead-4724-a088-0ba4ac14a70f" />
         <classShapeMoniker Id="9801cadf-1e4a-4400-a53e-9762aabb15b0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.625 : 5.61400248209635); (5.70833333333333 : 5.61400248209635 : JumpStart); (5.54166666666667 : 5.61400248209635 : JumpEnd); (4 : 5.61400248209635)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.625 : 5.61400248209635); (4 : 5.61400248209635)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/AMEntDataContext/UnitOfMeasure/UnitOfMeasure_Inventory3" />
       <nodes>
         <classShapeMoniker Id="ccae6c0d-aead-4724-a088-0ba4ac14a70f" />
         <classShapeMoniker Id="9801cadf-1e4a-4400-a53e-9762aabb15b0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.625 : 4.86840148925781); (5.625 : 4.86840148925781); (5.625 : 9.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.625 : 4.86840148925781); (5.625 : 4.86840148925781); (5.625 : 9.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/AMEntDataContext/UnitOfMeasure/UnitOfMeasure_InventoryPrice" />
       <nodes>
         <classShapeMoniker Id="ccae6c0d-aead-4724-a088-0ba4ac14a70f" />
         <classShapeMoniker Id="1b481fb4-62bc-4f0d-8957-ee6d10f98d03" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="29e581b3-634f-40c2-bcb6-c8a67815de87" absoluteBounds="12.375, 17.625, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/AMEntDataContext/InventoryAttribute" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1494241d-a59c-452c-a78f-c0e8ebbfbe4d" absoluteBounds="12.39, 18.085, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4 : 19.5724104817708); (12.375 : 19.5724104817708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AMEntDataContext/Inventory/Inventory_InventoryAttribute" />
+      <nodes>
+        <classShapeMoniker Id="9801cadf-1e4a-4400-a53e-9762aabb15b0" />
+        <classShapeMoniker Id="29e581b3-634f-40c2-bcb6-c8a67815de87" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
