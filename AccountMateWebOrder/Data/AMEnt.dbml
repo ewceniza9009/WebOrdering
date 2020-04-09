@@ -103,7 +103,11 @@
       <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
       <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="Inventory_InventoryWarehouse" Member="InventoryWarehouses" ThisKey="ID" OtherKey="InventoryID" Type="InventoryWarehouse" />
+<<<<<<< HEAD
       <Association Name="Inventory_InventoryPrice" Member="InventoryPrices" ThisKey="ID" OtherKey="InventoryID" Type="InventoryPrice" />
+=======
+      <Association Name="Inventory_InventoryAttribute" Member="InventoryAttributes" ThisKey="ID" OtherKey="InventoryID" Type="InventoryAttribute" />
+>>>>>>> 8fd41e52f915c5425291622830c175436fd20bc2
       <Association Name="UnitOfMeasure_Inventory" Member="UnitOfMeasure" ThisKey="PurchaseUOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
       <Association Name="UnitOfMeasure_Inventory1" Member="UnitOfMeasure1" ThisKey="SaleUOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
       <Association Name="UnitOfMeasure_Inventory2" Member="UnitOfMeasure2" ThisKey="StockUOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
@@ -283,6 +287,21 @@
       <Association Name="UnitOfMeasure_Inventory2" Member="Inventories2" ThisKey="ID" OtherKey="StockUOMID" Type="Inventory" />
       <Association Name="UnitOfMeasure_Inventory3" Member="Inventories3" ThisKey="ID" OtherKey="StorageUOMID" Type="Inventory" />
       <Association Name="UnitOfMeasure_InventoryPrice" Member="InventoryPrices" ThisKey="ID" OtherKey="UOMID" Type="InventoryPrice" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryAttribute" Member="InventoryAttributes">
+    <Type Name="InventoryAttribute">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InventoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AttributeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MiscCodeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ShortDescription" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Inventory_InventoryAttribute" Member="Inventory" ThisKey="InventoryID" OtherKey="ID" Type="Inventory" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

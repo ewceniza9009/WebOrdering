@@ -72,11 +72,17 @@ namespace AccountMateWebOrder.Services
 
             return shoppingCart;
         }
-        public static void AddItemToShoppingCart(Models.Inventory model) 
+        public static void AddItemToShoppingCart(Models.Inventory model, bool isBuy = false) 
         {
             using (var ctx = new Data.AMEntDataContext())
             {
                 var prod = ctx.Inventories.Where(x => x.ID == model.Id).SingleOrDefault();
+
+                if (isBuy)
+                {
+                    Cart = null;
+                    Cart = new List<Models.ShoppingCart>();
+                }
 
                 //var qty = new Random().Next(1, 5);
                 int? qty = model.Quantity;
@@ -86,7 +92,7 @@ namespace AccountMateWebOrder.Services
                                 prod.InventoryPrices.FirstOrDefault().InventoryListPrices.Max(a => a.ListPrice) : 0
                             : 0
                         : 0;
-                var totalPrice = (qty??0) * lstPrice;
+                var totalPrice = (qty ?? 0) * lstPrice;
 
                 Cart.Add(new Models.ShoppingCart()
                 {
@@ -95,13 +101,14 @@ namespace AccountMateWebOrder.Services
                     ProductName = prod.Description,
                     Size = Resource.StaticResource.Size[new Random().Next(0, 2)],
                     Color = Resource.StaticResource.Color[new Random().Next(0, 4)],
-                    Quantity = qty??0,
+                    Quantity = qty ?? 0,
                     CurrencyName = "USD",
                     ListPrice = lstPrice,
                     TotalPrice = totalPrice,
                     ImagePath = Resource.StaticResource.ImagePath
 
                 });
+                         
             }
         }
         public static void EditItemOnShoppingCart(int id, int quantity)

@@ -54,6 +54,9 @@ namespace AccountMateWebOrder.Data
     partial void InsertUnitOfMeasure(UnitOfMeasure instance);
     partial void UpdateUnitOfMeasure(UnitOfMeasure instance);
     partial void DeleteUnitOfMeasure(UnitOfMeasure instance);
+    partial void InsertInventoryAttribute(InventoryAttribute instance);
+    partial void UpdateInventoryAttribute(InventoryAttribute instance);
+    partial void DeleteInventoryAttribute(InventoryAttribute instance);
     #endregion
 		
 		public AMEntDataContext() : 
@@ -147,6 +150,14 @@ namespace AccountMateWebOrder.Data
 			get
 			{
 				return this.GetTable<UnitOfMeasure>();
+			}
+		}
+		
+		public System.Data.Linq.Table<InventoryAttribute> InventoryAttributes
+		{
+			get
+			{
+				return this.GetTable<InventoryAttribute>();
 			}
 		}
 	}
@@ -361,6 +372,13 @@ namespace AccountMateWebOrder.Data
 		
 		private EntitySet<InventoryPrice> _InventoryPrices;
 		
+<<<<<<< HEAD
+=======
+		private EntitySet<InventoryWarehouse> _InventoryWarehouses;
+		
+		private EntitySet<InventoryAttribute> _InventoryAttributes;
+		
+>>>>>>> 8fd41e52f915c5425291622830c175436fd20bc2
 		private EntityRef<UnitOfMeasure> _UnitOfMeasure;
 		
 		private EntityRef<UnitOfMeasure> _UnitOfMeasure1;
@@ -578,7 +596,11 @@ namespace AccountMateWebOrder.Data
 		public Inventory()
 		{
 			this._InventoryWarehouses = new EntitySet<InventoryWarehouse>(new Action<InventoryWarehouse>(this.attach_InventoryWarehouses), new Action<InventoryWarehouse>(this.detach_InventoryWarehouses));
+<<<<<<< HEAD
 			this._InventoryPrices = new EntitySet<InventoryPrice>(new Action<InventoryPrice>(this.attach_InventoryPrices), new Action<InventoryPrice>(this.detach_InventoryPrices));
+=======
+			this._InventoryAttributes = new EntitySet<InventoryAttribute>(new Action<InventoryAttribute>(this.attach_InventoryAttributes), new Action<InventoryAttribute>(this.detach_InventoryAttributes));
+>>>>>>> 8fd41e52f915c5425291622830c175436fd20bc2
 			this._UnitOfMeasure = default(EntityRef<UnitOfMeasure>);
 			this._UnitOfMeasure1 = default(EntityRef<UnitOfMeasure>);
 			this._UnitOfMeasure2 = default(EntityRef<UnitOfMeasure>);
@@ -2628,6 +2650,35 @@ namespace AccountMateWebOrder.Data
 			}
 		}
 		
+<<<<<<< HEAD
+=======
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Inventory_InventoryWarehouse", Storage="_InventoryWarehouses", ThisKey="ID", OtherKey="InventoryID")]
+		public EntitySet<InventoryWarehouse> InventoryWarehouses
+		{
+			get
+			{
+				return this._InventoryWarehouses;
+			}
+			set
+			{
+				this._InventoryWarehouses.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Inventory_InventoryAttribute", Storage="_InventoryAttributes", ThisKey="ID", OtherKey="InventoryID")]
+		public EntitySet<InventoryAttribute> InventoryAttributes
+		{
+			get
+			{
+				return this._InventoryAttributes;
+			}
+			set
+			{
+				this._InventoryAttributes.Assign(value);
+			}
+		}
+		
+>>>>>>> 8fd41e52f915c5425291622830c175436fd20bc2
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UnitOfMeasure_Inventory", Storage="_UnitOfMeasure", ThisKey="PurchaseUOMID", OtherKey="ID", IsForeignKey=true)]
 		public UnitOfMeasure UnitOfMeasure
 		{
@@ -2803,6 +2854,18 @@ namespace AccountMateWebOrder.Data
 		}
 		
 		private void detach_InventoryPrices(InventoryPrice entity)
+		{
+			this.SendPropertyChanging();
+			entity.Inventory = null;
+		}
+		
+		private void attach_InventoryAttributes(InventoryAttribute entity)
+		{
+			this.SendPropertyChanging();
+			entity.Inventory = this;
+		}
+		
+		private void detach_InventoryAttributes(InventoryAttribute entity)
 		{
 			this.SendPropertyChanging();
 			entity.Inventory = null;
@@ -6755,6 +6818,325 @@ namespace AccountMateWebOrder.Data
 		{
 			this.SendPropertyChanging();
 			entity.UnitOfMeasure = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InventoryAttribute")]
+	public partial class InventoryAttribute : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _InventoryID;
+		
+		private int _AttributeID;
+		
+		private int _MiscCodeID;
+		
+		private string _Description;
+		
+		private string _ShortDescription;
+		
+		private System.DateTime _DateCreated;
+		
+		private string _CreatedBy;
+		
+		private System.DateTime _DateModified;
+		
+		private string _ModifiedBy;
+		
+		private EntityRef<Inventory> _Inventory;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnInventoryIDChanging(int value);
+    partial void OnInventoryIDChanged();
+    partial void OnAttributeIDChanging(int value);
+    partial void OnAttributeIDChanged();
+    partial void OnMiscCodeIDChanging(int value);
+    partial void OnMiscCodeIDChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnShortDescriptionChanging(string value);
+    partial void OnShortDescriptionChanged();
+    partial void OnDateCreatedChanging(System.DateTime value);
+    partial void OnDateCreatedChanged();
+    partial void OnCreatedByChanging(string value);
+    partial void OnCreatedByChanged();
+    partial void OnDateModifiedChanging(System.DateTime value);
+    partial void OnDateModifiedChanged();
+    partial void OnModifiedByChanging(string value);
+    partial void OnModifiedByChanged();
+    #endregion
+		
+		public InventoryAttribute()
+		{
+			this._Inventory = default(EntityRef<Inventory>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryID", DbType="Int NOT NULL")]
+		public int InventoryID
+		{
+			get
+			{
+				return this._InventoryID;
+			}
+			set
+			{
+				if ((this._InventoryID != value))
+				{
+					if (this._Inventory.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnInventoryIDChanging(value);
+					this.SendPropertyChanging();
+					this._InventoryID = value;
+					this.SendPropertyChanged("InventoryID");
+					this.OnInventoryIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AttributeID", DbType="Int NOT NULL")]
+		public int AttributeID
+		{
+			get
+			{
+				return this._AttributeID;
+			}
+			set
+			{
+				if ((this._AttributeID != value))
+				{
+					this.OnAttributeIDChanging(value);
+					this.SendPropertyChanging();
+					this._AttributeID = value;
+					this.SendPropertyChanged("AttributeID");
+					this.OnAttributeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MiscCodeID", DbType="Int NOT NULL")]
+		public int MiscCodeID
+		{
+			get
+			{
+				return this._MiscCodeID;
+			}
+			set
+			{
+				if ((this._MiscCodeID != value))
+				{
+					this.OnMiscCodeIDChanging(value);
+					this.SendPropertyChanging();
+					this._MiscCodeID = value;
+					this.SendPropertyChanged("MiscCodeID");
+					this.OnMiscCodeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShortDescription", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
+		public string ShortDescription
+		{
+			get
+			{
+				return this._ShortDescription;
+			}
+			set
+			{
+				if ((this._ShortDescription != value))
+				{
+					this.OnShortDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._ShortDescription = value;
+					this.SendPropertyChanged("ShortDescription");
+					this.OnShortDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime2 NOT NULL")]
+		public System.DateTime DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CreatedBy
+		{
+			get
+			{
+				return this._CreatedBy;
+			}
+			set
+			{
+				if ((this._CreatedBy != value))
+				{
+					this.OnCreatedByChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedBy = value;
+					this.SendPropertyChanged("CreatedBy");
+					this.OnCreatedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime2 NOT NULL")]
+		public System.DateTime DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ModifiedBy
+		{
+			get
+			{
+				return this._ModifiedBy;
+			}
+			set
+			{
+				if ((this._ModifiedBy != value))
+				{
+					this.OnModifiedByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedBy = value;
+					this.SendPropertyChanged("ModifiedBy");
+					this.OnModifiedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Inventory_InventoryAttribute", Storage="_Inventory", ThisKey="InventoryID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Inventory Inventory
+		{
+			get
+			{
+				return this._Inventory.Entity;
+			}
+			set
+			{
+				Inventory previousValue = this._Inventory.Entity;
+				if (((previousValue != value) 
+							|| (this._Inventory.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Inventory.Entity = null;
+						previousValue.InventoryAttributes.Remove(this);
+					}
+					this._Inventory.Entity = value;
+					if ((value != null))
+					{
+						value.InventoryAttributes.Add(this);
+						this._InventoryID = value.ID;
+					}
+					else
+					{
+						this._InventoryID = default(int);
+					}
+					this.SendPropertyChanged("Inventory");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

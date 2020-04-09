@@ -458,6 +458,7 @@
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Home\_AddProduct.cshtml" />
     <Content Include="Views\Shared\_NotificationsPartial.cshtml" />
+    <Content Include="Views\Home\_AddOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

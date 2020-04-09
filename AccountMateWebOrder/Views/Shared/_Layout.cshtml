@@ -19,7 +19,7 @@
         }
     </style>
 </head>
-<body>
+<body style="height: 100%">
     @*<div id="nav-bar" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
         <h5 id="logo" class="my-0 mr-md-auto font-weight-normal">@Html.ActionLink(AccountMateWebOrder.Services.CompanyService.CompanyName, "Index", "Home", new { area = "" }, null)</h5>
         <form class="form-inline mt-2 mt-md-0">
@@ -58,11 +58,11 @@
         </div>
     </nav>
 
-    <div class="container body-content" style="padding-top: 80px; padding-bottom: 20px; margin-bottom:20px; border-radius: 0px 0px 15px 15px; background-color: #f0f0f0;">
+    <div class="container body-content" style="padding-top: 80px; padding-bottom: 20px; margin-bottom:20px; border-radius: 0px 0px 15px 15px; background-color: #97a2a7;">
         @RenderBody()
     </div>
 
-    <footer class="footer">
+    <footer class="footer" style="position: relative">
         @*<p>&copy; @DateTime.Now.Year - Powered by AccountMate Software Inc.</p>*@
 
         <div class="container bottom_border">
@@ -136,24 +136,5 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
-    <script>
-        resize();
-        $(window).resize(resize);
-        function resize() {
-            if ($(window).width() > 768) {
-                if ($("#nav-bar").offset().top > 50) {
-                    $("#nav-bar").addClass("shrink-nav");
-                    $("#logo").addClass("shrink-logo");
-                } else {
-                    $("#nav-bar").removeClass("shrink-nav");
-                    $("#logo").removeClass("shrink-logo");
-                }
-            } else {
-                $(".nav-bar").addClass("shrink-nav");
-                $("logo").addClass("shrink-logo");
-            }
-        }
-    </script>
 </body>
 </html>

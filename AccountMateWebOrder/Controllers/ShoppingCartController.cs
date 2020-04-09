@@ -14,12 +14,21 @@ namespace AccountMateWebOrder.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddProduct(Models.Inventory model) 
+        public ActionResult AddProduct(Models.Inventory model,string submit) 
         {
             if (ModelState.IsValid) 
             {
-                Services.ShoppingCartService.AddItemToShoppingCart(model);
-                return RedirectToAction("Index", "Home");
+                if (submit != "buy")
+                {
+                    Services.ShoppingCartService.AddItemToShoppingCart(model);
+                    return RedirectToAction("Index", "Home");
+                }
+                else 
+                {
+                    Services.ShoppingCartService.AddItemToShoppingCart(model, true);
+                    return RedirectToAction("Index");
+                }
+                
             }
 
             return RedirectToAction("Detail", "Home", new
