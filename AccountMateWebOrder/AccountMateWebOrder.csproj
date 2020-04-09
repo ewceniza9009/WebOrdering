@@ -340,14 +340,14 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="Data\AMEnt.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>AMEnt.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Data\AMSys.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>AMSys.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Data\AMEnt.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>AMEnt.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -474,13 +474,13 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\AMEnt.dbml.layout">
-      <DependentUpon>AMEnt.dbml</DependentUpon>
+    <None Include="Data\AMSys.dbml.layout">
+      <DependentUpon>AMSys.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\AMSys.dbml.layout">
-      <DependentUpon>AMSys.dbml</DependentUpon>
+    <None Include="Data\AMEnt.dbml.layout">
+      <DependentUpon>AMEnt.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <PropertyGroup>

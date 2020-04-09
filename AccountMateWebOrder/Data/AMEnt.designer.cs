@@ -33,30 +33,27 @@ namespace AccountMateWebOrder.Data
     partial void InsertInventory(Inventory instance);
     partial void UpdateInventory(Inventory instance);
     partial void DeleteInventory(Inventory instance);
-    partial void InsertCustomer(Customer instance);
-    partial void UpdateCustomer(Customer instance);
-    partial void DeleteCustomer(Customer instance);
-    partial void InsertInventoryWarehouse(InventoryWarehouse instance);
-    partial void UpdateInventoryWarehouse(InventoryWarehouse instance);
-    partial void DeleteInventoryWarehouse(InventoryWarehouse instance);
     partial void InsertInventoryPrice(InventoryPrice instance);
     partial void UpdateInventoryPrice(InventoryPrice instance);
     partial void DeleteInventoryPrice(InventoryPrice instance);
     partial void InsertInventoryListPrice(InventoryListPrice instance);
     partial void UpdateInventoryListPrice(InventoryListPrice instance);
     partial void DeleteInventoryListPrice(InventoryListPrice instance);
-    partial void InsertInventorySpecialPrice(InventorySpecialPrice instance);
-    partial void UpdateInventorySpecialPrice(InventorySpecialPrice instance);
-    partial void DeleteInventorySpecialPrice(InventorySpecialPrice instance);
+    partial void InsertInventoryWarehouse(InventoryWarehouse instance);
+    partial void UpdateInventoryWarehouse(InventoryWarehouse instance);
+    partial void DeleteInventoryWarehouse(InventoryWarehouse instance);
     partial void InsertInventoryTierPrice(InventoryTierPrice instance);
     partial void UpdateInventoryTierPrice(InventoryTierPrice instance);
     partial void DeleteInventoryTierPrice(InventoryTierPrice instance);
+    partial void InsertInventorySpecialPrice(InventorySpecialPrice instance);
+    partial void UpdateInventorySpecialPrice(InventorySpecialPrice instance);
+    partial void DeleteInventorySpecialPrice(InventorySpecialPrice instance);
+    partial void InsertCustomer(Customer instance);
+    partial void UpdateCustomer(Customer instance);
+    partial void DeleteCustomer(Customer instance);
     partial void InsertUnitOfMeasure(UnitOfMeasure instance);
     partial void UpdateUnitOfMeasure(UnitOfMeasure instance);
     partial void DeleteUnitOfMeasure(UnitOfMeasure instance);
-    partial void InsertInventoryAttribute(InventoryAttribute instance);
-    partial void UpdateInventoryAttribute(InventoryAttribute instance);
-    partial void DeleteInventoryAttribute(InventoryAttribute instance);
     #endregion
 		
 		public AMEntDataContext() : 
@@ -97,22 +94,6 @@ namespace AccountMateWebOrder.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<Customer> Customers
-		{
-			get
-			{
-				return this.GetTable<Customer>();
-			}
-		}
-		
-		public System.Data.Linq.Table<InventoryWarehouse> InventoryWarehouses
-		{
-			get
-			{
-				return this.GetTable<InventoryWarehouse>();
-			}
-		}
-		
 		public System.Data.Linq.Table<InventoryPrice> InventoryPrices
 		{
 			get
@@ -129,11 +110,11 @@ namespace AccountMateWebOrder.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<InventorySpecialPrice> InventorySpecialPrices
+		public System.Data.Linq.Table<InventoryWarehouse> InventoryWarehouses
 		{
 			get
 			{
-				return this.GetTable<InventorySpecialPrice>();
+				return this.GetTable<InventoryWarehouse>();
 			}
 		}
 		
@@ -145,19 +126,27 @@ namespace AccountMateWebOrder.Data
 			}
 		}
 		
+		public System.Data.Linq.Table<InventorySpecialPrice> InventorySpecialPrices
+		{
+			get
+			{
+				return this.GetTable<InventorySpecialPrice>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Customer> Customers
+		{
+			get
+			{
+				return this.GetTable<Customer>();
+			}
+		}
+		
 		public System.Data.Linq.Table<UnitOfMeasure> UnitOfMeasures
 		{
 			get
 			{
 				return this.GetTable<UnitOfMeasure>();
-			}
-		}
-		
-		public System.Data.Linq.Table<InventoryAttribute> InventoryAttributes
-		{
-			get
-			{
-				return this.GetTable<InventoryAttribute>();
 			}
 		}
 	}
@@ -368,17 +357,10 @@ namespace AccountMateWebOrder.Data
 		
 		private string _ModifiedBy;
 		
-		private EntitySet<InventoryWarehouse> _InventoryWarehouses;
-		
 		private EntitySet<InventoryPrice> _InventoryPrices;
 		
-<<<<<<< HEAD
-=======
 		private EntitySet<InventoryWarehouse> _InventoryWarehouses;
 		
-		private EntitySet<InventoryAttribute> _InventoryAttributes;
-		
->>>>>>> 8fd41e52f915c5425291622830c175436fd20bc2
 		private EntityRef<UnitOfMeasure> _UnitOfMeasure;
 		
 		private EntityRef<UnitOfMeasure> _UnitOfMeasure1;
@@ -595,12 +577,8 @@ namespace AccountMateWebOrder.Data
 		
 		public Inventory()
 		{
-			this._InventoryWarehouses = new EntitySet<InventoryWarehouse>(new Action<InventoryWarehouse>(this.attach_InventoryWarehouses), new Action<InventoryWarehouse>(this.detach_InventoryWarehouses));
-<<<<<<< HEAD
 			this._InventoryPrices = new EntitySet<InventoryPrice>(new Action<InventoryPrice>(this.attach_InventoryPrices), new Action<InventoryPrice>(this.detach_InventoryPrices));
-=======
-			this._InventoryAttributes = new EntitySet<InventoryAttribute>(new Action<InventoryAttribute>(this.attach_InventoryAttributes), new Action<InventoryAttribute>(this.detach_InventoryAttributes));
->>>>>>> 8fd41e52f915c5425291622830c175436fd20bc2
+			this._InventoryWarehouses = new EntitySet<InventoryWarehouse>(new Action<InventoryWarehouse>(this.attach_InventoryWarehouses), new Action<InventoryWarehouse>(this.detach_InventoryWarehouses));
 			this._UnitOfMeasure = default(EntityRef<UnitOfMeasure>);
 			this._UnitOfMeasure1 = default(EntityRef<UnitOfMeasure>);
 			this._UnitOfMeasure2 = default(EntityRef<UnitOfMeasure>);
@@ -2624,19 +2602,6 @@ namespace AccountMateWebOrder.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Inventory_InventoryWarehouse", Storage="_InventoryWarehouses", ThisKey="ID", OtherKey="InventoryID")]
-		public EntitySet<InventoryWarehouse> InventoryWarehouses
-		{
-			get
-			{
-				return this._InventoryWarehouses;
-			}
-			set
-			{
-				this._InventoryWarehouses.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Inventory_InventoryPrice", Storage="_InventoryPrices", ThisKey="ID", OtherKey="InventoryID")]
 		public EntitySet<InventoryPrice> InventoryPrices
 		{
@@ -2650,8 +2615,6 @@ namespace AccountMateWebOrder.Data
 			}
 		}
 		
-<<<<<<< HEAD
-=======
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Inventory_InventoryWarehouse", Storage="_InventoryWarehouses", ThisKey="ID", OtherKey="InventoryID")]
 		public EntitySet<InventoryWarehouse> InventoryWarehouses
 		{
@@ -2665,20 +2628,6 @@ namespace AccountMateWebOrder.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Inventory_InventoryAttribute", Storage="_InventoryAttributes", ThisKey="ID", OtherKey="InventoryID")]
-		public EntitySet<InventoryAttribute> InventoryAttributes
-		{
-			get
-			{
-				return this._InventoryAttributes;
-			}
-			set
-			{
-				this._InventoryAttributes.Assign(value);
-			}
-		}
-		
->>>>>>> 8fd41e52f915c5425291622830c175436fd20bc2
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UnitOfMeasure_Inventory", Storage="_UnitOfMeasure", ThisKey="PurchaseUOMID", OtherKey="ID", IsForeignKey=true)]
 		public UnitOfMeasure UnitOfMeasure
 		{
@@ -2835,18 +2784,6 @@ namespace AccountMateWebOrder.Data
 			}
 		}
 		
-		private void attach_InventoryWarehouses(InventoryWarehouse entity)
-		{
-			this.SendPropertyChanging();
-			entity.Inventory = this;
-		}
-		
-		private void detach_InventoryWarehouses(InventoryWarehouse entity)
-		{
-			this.SendPropertyChanging();
-			entity.Inventory = null;
-		}
-		
 		private void attach_InventoryPrices(InventoryPrice entity)
 		{
 			this.SendPropertyChanging();
@@ -2859,16 +2796,2192 @@ namespace AccountMateWebOrder.Data
 			entity.Inventory = null;
 		}
 		
-		private void attach_InventoryAttributes(InventoryAttribute entity)
+		private void attach_InventoryWarehouses(InventoryWarehouse entity)
 		{
 			this.SendPropertyChanging();
 			entity.Inventory = this;
 		}
 		
-		private void detach_InventoryAttributes(InventoryAttribute entity)
+		private void detach_InventoryWarehouses(InventoryWarehouse entity)
 		{
 			this.SendPropertyChanging();
 			entity.Inventory = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InventoryPrice")]
+	public partial class InventoryPrice : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _InventoryID;
+		
+		private System.Nullable<int> _InventorySpecID;
+		
+		private int _UOMID;
+		
+		private int _CurrencyID;
+		
+		private byte _PriceDecimalPlaces;
+		
+		private decimal _MinimumPrice;
+		
+		private System.Nullable<int> _CustomerPriceGroupID;
+		
+		private System.Nullable<byte> _PriceType;
+		
+		private System.DateTime _DateCreated;
+		
+		private string _CreatedBy;
+		
+		private System.DateTime _DateModified;
+		
+		private string _ModifiedBy;
+		
+		private EntitySet<InventoryListPrice> _InventoryListPrices;
+		
+		private EntitySet<InventoryTierPrice> _InventoryTierPrices;
+		
+		private EntitySet<InventorySpecialPrice> _InventorySpecialPrices;
+		
+		private EntityRef<Inventory> _Inventory;
+		
+		private EntityRef<UnitOfMeasure> _UnitOfMeasure;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnInventoryIDChanging(int value);
+    partial void OnInventoryIDChanged();
+    partial void OnInventorySpecIDChanging(System.Nullable<int> value);
+    partial void OnInventorySpecIDChanged();
+    partial void OnUOMIDChanging(int value);
+    partial void OnUOMIDChanged();
+    partial void OnCurrencyIDChanging(int value);
+    partial void OnCurrencyIDChanged();
+    partial void OnPriceDecimalPlacesChanging(byte value);
+    partial void OnPriceDecimalPlacesChanged();
+    partial void OnMinimumPriceChanging(decimal value);
+    partial void OnMinimumPriceChanged();
+    partial void OnCustomerPriceGroupIDChanging(System.Nullable<int> value);
+    partial void OnCustomerPriceGroupIDChanged();
+    partial void OnPriceTypeChanging(System.Nullable<byte> value);
+    partial void OnPriceTypeChanged();
+    partial void OnDateCreatedChanging(System.DateTime value);
+    partial void OnDateCreatedChanged();
+    partial void OnCreatedByChanging(string value);
+    partial void OnCreatedByChanged();
+    partial void OnDateModifiedChanging(System.DateTime value);
+    partial void OnDateModifiedChanged();
+    partial void OnModifiedByChanging(string value);
+    partial void OnModifiedByChanged();
+    #endregion
+		
+		public InventoryPrice()
+		{
+			this._InventoryListPrices = new EntitySet<InventoryListPrice>(new Action<InventoryListPrice>(this.attach_InventoryListPrices), new Action<InventoryListPrice>(this.detach_InventoryListPrices));
+			this._InventoryTierPrices = new EntitySet<InventoryTierPrice>(new Action<InventoryTierPrice>(this.attach_InventoryTierPrices), new Action<InventoryTierPrice>(this.detach_InventoryTierPrices));
+			this._InventorySpecialPrices = new EntitySet<InventorySpecialPrice>(new Action<InventorySpecialPrice>(this.attach_InventorySpecialPrices), new Action<InventorySpecialPrice>(this.detach_InventorySpecialPrices));
+			this._Inventory = default(EntityRef<Inventory>);
+			this._UnitOfMeasure = default(EntityRef<UnitOfMeasure>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryID", DbType="Int NOT NULL")]
+		public int InventoryID
+		{
+			get
+			{
+				return this._InventoryID;
+			}
+			set
+			{
+				if ((this._InventoryID != value))
+				{
+					if (this._Inventory.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnInventoryIDChanging(value);
+					this.SendPropertyChanging();
+					this._InventoryID = value;
+					this.SendPropertyChanged("InventoryID");
+					this.OnInventoryIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventorySpecID", DbType="Int")]
+		public System.Nullable<int> InventorySpecID
+		{
+			get
+			{
+				return this._InventorySpecID;
+			}
+			set
+			{
+				if ((this._InventorySpecID != value))
+				{
+					this.OnInventorySpecIDChanging(value);
+					this.SendPropertyChanging();
+					this._InventorySpecID = value;
+					this.SendPropertyChanged("InventorySpecID");
+					this.OnInventorySpecIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UOMID", DbType="Int NOT NULL")]
+		public int UOMID
+		{
+			get
+			{
+				return this._UOMID;
+			}
+			set
+			{
+				if ((this._UOMID != value))
+				{
+					if (this._UnitOfMeasure.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUOMIDChanging(value);
+					this.SendPropertyChanging();
+					this._UOMID = value;
+					this.SendPropertyChanged("UOMID");
+					this.OnUOMIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrencyID", DbType="Int NOT NULL")]
+		public int CurrencyID
+		{
+			get
+			{
+				return this._CurrencyID;
+			}
+			set
+			{
+				if ((this._CurrencyID != value))
+				{
+					this.OnCurrencyIDChanging(value);
+					this.SendPropertyChanging();
+					this._CurrencyID = value;
+					this.SendPropertyChanged("CurrencyID");
+					this.OnCurrencyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceDecimalPlaces", DbType="TinyInt NOT NULL")]
+		public byte PriceDecimalPlaces
+		{
+			get
+			{
+				return this._PriceDecimalPlaces;
+			}
+			set
+			{
+				if ((this._PriceDecimalPlaces != value))
+				{
+					this.OnPriceDecimalPlacesChanging(value);
+					this.SendPropertyChanging();
+					this._PriceDecimalPlaces = value;
+					this.SendPropertyChanged("PriceDecimalPlaces");
+					this.OnPriceDecimalPlacesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinimumPrice", DbType="Decimal(20,6) NOT NULL")]
+		public decimal MinimumPrice
+		{
+			get
+			{
+				return this._MinimumPrice;
+			}
+			set
+			{
+				if ((this._MinimumPrice != value))
+				{
+					this.OnMinimumPriceChanging(value);
+					this.SendPropertyChanging();
+					this._MinimumPrice = value;
+					this.SendPropertyChanged("MinimumPrice");
+					this.OnMinimumPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerPriceGroupID", DbType="Int")]
+		public System.Nullable<int> CustomerPriceGroupID
+		{
+			get
+			{
+				return this._CustomerPriceGroupID;
+			}
+			set
+			{
+				if ((this._CustomerPriceGroupID != value))
+				{
+					this.OnCustomerPriceGroupIDChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerPriceGroupID = value;
+					this.SendPropertyChanged("CustomerPriceGroupID");
+					this.OnCustomerPriceGroupIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceType", DbType="TinyInt")]
+		public System.Nullable<byte> PriceType
+		{
+			get
+			{
+				return this._PriceType;
+			}
+			set
+			{
+				if ((this._PriceType != value))
+				{
+					this.OnPriceTypeChanging(value);
+					this.SendPropertyChanging();
+					this._PriceType = value;
+					this.SendPropertyChanged("PriceType");
+					this.OnPriceTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime2 NOT NULL")]
+		public System.DateTime DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CreatedBy
+		{
+			get
+			{
+				return this._CreatedBy;
+			}
+			set
+			{
+				if ((this._CreatedBy != value))
+				{
+					this.OnCreatedByChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedBy = value;
+					this.SendPropertyChanged("CreatedBy");
+					this.OnCreatedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime2 NOT NULL")]
+		public System.DateTime DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ModifiedBy
+		{
+			get
+			{
+				return this._ModifiedBy;
+			}
+			set
+			{
+				if ((this._ModifiedBy != value))
+				{
+					this.OnModifiedByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedBy = value;
+					this.SendPropertyChanged("ModifiedBy");
+					this.OnModifiedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InventoryPrice_InventoryListPrice", Storage="_InventoryListPrices", ThisKey="ID", OtherKey="InventoryPriceID")]
+		public EntitySet<InventoryListPrice> InventoryListPrices
+		{
+			get
+			{
+				return this._InventoryListPrices;
+			}
+			set
+			{
+				this._InventoryListPrices.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InventoryPrice_InventoryTierPrice", Storage="_InventoryTierPrices", ThisKey="ID", OtherKey="InventoryPriceID")]
+		public EntitySet<InventoryTierPrice> InventoryTierPrices
+		{
+			get
+			{
+				return this._InventoryTierPrices;
+			}
+			set
+			{
+				this._InventoryTierPrices.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InventoryPrice_InventorySpecialPrice", Storage="_InventorySpecialPrices", ThisKey="ID", OtherKey="InventoryPriceID")]
+		public EntitySet<InventorySpecialPrice> InventorySpecialPrices
+		{
+			get
+			{
+				return this._InventorySpecialPrices;
+			}
+			set
+			{
+				this._InventorySpecialPrices.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Inventory_InventoryPrice", Storage="_Inventory", ThisKey="InventoryID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Inventory Inventory
+		{
+			get
+			{
+				return this._Inventory.Entity;
+			}
+			set
+			{
+				Inventory previousValue = this._Inventory.Entity;
+				if (((previousValue != value) 
+							|| (this._Inventory.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Inventory.Entity = null;
+						previousValue.InventoryPrices.Remove(this);
+					}
+					this._Inventory.Entity = value;
+					if ((value != null))
+					{
+						value.InventoryPrices.Add(this);
+						this._InventoryID = value.ID;
+					}
+					else
+					{
+						this._InventoryID = default(int);
+					}
+					this.SendPropertyChanged("Inventory");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UnitOfMeasure_InventoryPrice", Storage="_UnitOfMeasure", ThisKey="UOMID", OtherKey="ID", IsForeignKey=true)]
+		public UnitOfMeasure UnitOfMeasure
+		{
+			get
+			{
+				return this._UnitOfMeasure.Entity;
+			}
+			set
+			{
+				UnitOfMeasure previousValue = this._UnitOfMeasure.Entity;
+				if (((previousValue != value) 
+							|| (this._UnitOfMeasure.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UnitOfMeasure.Entity = null;
+						previousValue.InventoryPrices.Remove(this);
+					}
+					this._UnitOfMeasure.Entity = value;
+					if ((value != null))
+					{
+						value.InventoryPrices.Add(this);
+						this._UOMID = value.ID;
+					}
+					else
+					{
+						this._UOMID = default(int);
+					}
+					this.SendPropertyChanged("UnitOfMeasure");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_InventoryListPrices(InventoryListPrice entity)
+		{
+			this.SendPropertyChanging();
+			entity.InventoryPrice = this;
+		}
+		
+		private void detach_InventoryListPrices(InventoryListPrice entity)
+		{
+			this.SendPropertyChanging();
+			entity.InventoryPrice = null;
+		}
+		
+		private void attach_InventoryTierPrices(InventoryTierPrice entity)
+		{
+			this.SendPropertyChanging();
+			entity.InventoryPrice = this;
+		}
+		
+		private void detach_InventoryTierPrices(InventoryTierPrice entity)
+		{
+			this.SendPropertyChanging();
+			entity.InventoryPrice = null;
+		}
+		
+		private void attach_InventorySpecialPrices(InventorySpecialPrice entity)
+		{
+			this.SendPropertyChanging();
+			entity.InventoryPrice = this;
+		}
+		
+		private void detach_InventorySpecialPrices(InventorySpecialPrice entity)
+		{
+			this.SendPropertyChanging();
+			entity.InventoryPrice = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InventoryListPrice")]
+	public partial class InventoryListPrice : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _InventoryPriceID;
+		
+		private decimal _ListPrice;
+		
+		private System.DateTime _StartDate;
+		
+		private System.DateTime _DateCreated;
+		
+		private string _CreatedBy;
+		
+		private System.DateTime _DateModified;
+		
+		private string _ModifiedBy;
+		
+		private EntityRef<InventoryPrice> _InventoryPrice;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnInventoryPriceIDChanging(int value);
+    partial void OnInventoryPriceIDChanged();
+    partial void OnListPriceChanging(decimal value);
+    partial void OnListPriceChanged();
+    partial void OnStartDateChanging(System.DateTime value);
+    partial void OnStartDateChanged();
+    partial void OnDateCreatedChanging(System.DateTime value);
+    partial void OnDateCreatedChanged();
+    partial void OnCreatedByChanging(string value);
+    partial void OnCreatedByChanged();
+    partial void OnDateModifiedChanging(System.DateTime value);
+    partial void OnDateModifiedChanged();
+    partial void OnModifiedByChanging(string value);
+    partial void OnModifiedByChanged();
+    #endregion
+		
+		public InventoryListPrice()
+		{
+			this._InventoryPrice = default(EntityRef<InventoryPrice>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryPriceID", DbType="Int NOT NULL")]
+		public int InventoryPriceID
+		{
+			get
+			{
+				return this._InventoryPriceID;
+			}
+			set
+			{
+				if ((this._InventoryPriceID != value))
+				{
+					if (this._InventoryPrice.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnInventoryPriceIDChanging(value);
+					this.SendPropertyChanging();
+					this._InventoryPriceID = value;
+					this.SendPropertyChanged("InventoryPriceID");
+					this.OnInventoryPriceIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListPrice", DbType="Decimal(20,6) NOT NULL")]
+		public decimal ListPrice
+		{
+			get
+			{
+				return this._ListPrice;
+			}
+			set
+			{
+				if ((this._ListPrice != value))
+				{
+					this.OnListPriceChanging(value);
+					this.SendPropertyChanging();
+					this._ListPrice = value;
+					this.SendPropertyChanged("ListPrice");
+					this.OnListPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date NOT NULL")]
+		public System.DateTime StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime2 NOT NULL")]
+		public System.DateTime DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CreatedBy
+		{
+			get
+			{
+				return this._CreatedBy;
+			}
+			set
+			{
+				if ((this._CreatedBy != value))
+				{
+					this.OnCreatedByChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedBy = value;
+					this.SendPropertyChanged("CreatedBy");
+					this.OnCreatedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime2 NOT NULL")]
+		public System.DateTime DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ModifiedBy
+		{
+			get
+			{
+				return this._ModifiedBy;
+			}
+			set
+			{
+				if ((this._ModifiedBy != value))
+				{
+					this.OnModifiedByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedBy = value;
+					this.SendPropertyChanged("ModifiedBy");
+					this.OnModifiedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InventoryPrice_InventoryListPrice", Storage="_InventoryPrice", ThisKey="InventoryPriceID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public InventoryPrice InventoryPrice
+		{
+			get
+			{
+				return this._InventoryPrice.Entity;
+			}
+			set
+			{
+				InventoryPrice previousValue = this._InventoryPrice.Entity;
+				if (((previousValue != value) 
+							|| (this._InventoryPrice.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._InventoryPrice.Entity = null;
+						previousValue.InventoryListPrices.Remove(this);
+					}
+					this._InventoryPrice.Entity = value;
+					if ((value != null))
+					{
+						value.InventoryListPrices.Add(this);
+						this._InventoryPriceID = value.ID;
+					}
+					else
+					{
+						this._InventoryPriceID = default(int);
+					}
+					this.SendPropertyChanged("InventoryPrice");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InventoryWarehouse")]
+	public partial class InventoryWarehouse : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _ID;
+		
+		private int _InventoryID;
+		
+		private int _WarehouseID;
+		
+		private System.Nullable<int> _InventorySpecID;
+		
+		private int _Sequence;
+		
+		private decimal _OnhandQty;
+		
+		private decimal _AverageCost;
+		
+		private short _Status;
+		
+		private decimal _SafetyStockQty;
+		
+		private decimal _ReorderPoint;
+		
+		private decimal _ReorderQty;
+		
+		private int _ManufacturingLeadDays;
+		
+		private System.Nullable<int> _RevenueCodeID;
+		
+		private System.Nullable<int> _InventoryAccountID;
+		
+		private System.Nullable<int> _InTransitInventoryAccountID;
+		
+		private System.Nullable<int> _InterimInventoryAccountID;
+		
+		private System.Nullable<int> _InventoryVarianceAccountID;
+		
+		private System.Nullable<int> _CostVarianceAccountID;
+		
+		private System.Nullable<int> _ContractCostAccountID;
+		
+		private System.Nullable<int> _ContractObligationAccountID;
+		
+		private System.Nullable<int> _ContractDiscountAccountID;
+		
+		private System.Nullable<decimal> _CurrentCost;
+		
+		private System.Nullable<decimal> _StandardCost;
+		
+		private System.Nullable<decimal> _ReturnCost;
+		
+		private System.DateTime _DateCreated;
+		
+		private string _CreatedBy;
+		
+		private System.DateTime _DateModified;
+		
+		private string _ModifiedBy;
+		
+		private EntityRef<Inventory> _Inventory;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(long value);
+    partial void OnIDChanged();
+    partial void OnInventoryIDChanging(int value);
+    partial void OnInventoryIDChanged();
+    partial void OnWarehouseIDChanging(int value);
+    partial void OnWarehouseIDChanged();
+    partial void OnInventorySpecIDChanging(System.Nullable<int> value);
+    partial void OnInventorySpecIDChanged();
+    partial void OnSequenceChanging(int value);
+    partial void OnSequenceChanged();
+    partial void OnOnhandQtyChanging(decimal value);
+    partial void OnOnhandQtyChanged();
+    partial void OnAverageCostChanging(decimal value);
+    partial void OnAverageCostChanged();
+    partial void OnStatusChanging(short value);
+    partial void OnStatusChanged();
+    partial void OnSafetyStockQtyChanging(decimal value);
+    partial void OnSafetyStockQtyChanged();
+    partial void OnReorderPointChanging(decimal value);
+    partial void OnReorderPointChanged();
+    partial void OnReorderQtyChanging(decimal value);
+    partial void OnReorderQtyChanged();
+    partial void OnManufacturingLeadDaysChanging(int value);
+    partial void OnManufacturingLeadDaysChanged();
+    partial void OnRevenueCodeIDChanging(System.Nullable<int> value);
+    partial void OnRevenueCodeIDChanged();
+    partial void OnInventoryAccountIDChanging(System.Nullable<int> value);
+    partial void OnInventoryAccountIDChanged();
+    partial void OnInTransitInventoryAccountIDChanging(System.Nullable<int> value);
+    partial void OnInTransitInventoryAccountIDChanged();
+    partial void OnInterimInventoryAccountIDChanging(System.Nullable<int> value);
+    partial void OnInterimInventoryAccountIDChanged();
+    partial void OnInventoryVarianceAccountIDChanging(System.Nullable<int> value);
+    partial void OnInventoryVarianceAccountIDChanged();
+    partial void OnCostVarianceAccountIDChanging(System.Nullable<int> value);
+    partial void OnCostVarianceAccountIDChanged();
+    partial void OnContractCostAccountIDChanging(System.Nullable<int> value);
+    partial void OnContractCostAccountIDChanged();
+    partial void OnContractObligationAccountIDChanging(System.Nullable<int> value);
+    partial void OnContractObligationAccountIDChanged();
+    partial void OnContractDiscountAccountIDChanging(System.Nullable<int> value);
+    partial void OnContractDiscountAccountIDChanged();
+    partial void OnCurrentCostChanging(System.Nullable<decimal> value);
+    partial void OnCurrentCostChanged();
+    partial void OnStandardCostChanging(System.Nullable<decimal> value);
+    partial void OnStandardCostChanged();
+    partial void OnReturnCostChanging(System.Nullable<decimal> value);
+    partial void OnReturnCostChanged();
+    partial void OnDateCreatedChanging(System.DateTime value);
+    partial void OnDateCreatedChanged();
+    partial void OnCreatedByChanging(string value);
+    partial void OnCreatedByChanged();
+    partial void OnDateModifiedChanging(System.DateTime value);
+    partial void OnDateModifiedChanged();
+    partial void OnModifiedByChanging(string value);
+    partial void OnModifiedByChanged();
+    #endregion
+		
+		public InventoryWarehouse()
+		{
+			this._Inventory = default(EntityRef<Inventory>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryID", DbType="Int NOT NULL")]
+		public int InventoryID
+		{
+			get
+			{
+				return this._InventoryID;
+			}
+			set
+			{
+				if ((this._InventoryID != value))
+				{
+					if (this._Inventory.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnInventoryIDChanging(value);
+					this.SendPropertyChanging();
+					this._InventoryID = value;
+					this.SendPropertyChanged("InventoryID");
+					this.OnInventoryIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WarehouseID", DbType="Int NOT NULL")]
+		public int WarehouseID
+		{
+			get
+			{
+				return this._WarehouseID;
+			}
+			set
+			{
+				if ((this._WarehouseID != value))
+				{
+					this.OnWarehouseIDChanging(value);
+					this.SendPropertyChanging();
+					this._WarehouseID = value;
+					this.SendPropertyChanged("WarehouseID");
+					this.OnWarehouseIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventorySpecID", DbType="Int")]
+		public System.Nullable<int> InventorySpecID
+		{
+			get
+			{
+				return this._InventorySpecID;
+			}
+			set
+			{
+				if ((this._InventorySpecID != value))
+				{
+					this.OnInventorySpecIDChanging(value);
+					this.SendPropertyChanging();
+					this._InventorySpecID = value;
+					this.SendPropertyChanged("InventorySpecID");
+					this.OnInventorySpecIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sequence", DbType="Int NOT NULL")]
+		public int Sequence
+		{
+			get
+			{
+				return this._Sequence;
+			}
+			set
+			{
+				if ((this._Sequence != value))
+				{
+					this.OnSequenceChanging(value);
+					this.SendPropertyChanging();
+					this._Sequence = value;
+					this.SendPropertyChanged("Sequence");
+					this.OnSequenceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OnhandQty", DbType="Decimal(20,6) NOT NULL")]
+		public decimal OnhandQty
+		{
+			get
+			{
+				return this._OnhandQty;
+			}
+			set
+			{
+				if ((this._OnhandQty != value))
+				{
+					this.OnOnhandQtyChanging(value);
+					this.SendPropertyChanging();
+					this._OnhandQty = value;
+					this.SendPropertyChanged("OnhandQty");
+					this.OnOnhandQtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AverageCost", DbType="Decimal(20,6) NOT NULL")]
+		public decimal AverageCost
+		{
+			get
+			{
+				return this._AverageCost;
+			}
+			set
+			{
+				if ((this._AverageCost != value))
+				{
+					this.OnAverageCostChanging(value);
+					this.SendPropertyChanging();
+					this._AverageCost = value;
+					this.SendPropertyChanged("AverageCost");
+					this.OnAverageCostChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="SmallInt NOT NULL")]
+		public short Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SafetyStockQty", DbType="Decimal(20,6) NOT NULL")]
+		public decimal SafetyStockQty
+		{
+			get
+			{
+				return this._SafetyStockQty;
+			}
+			set
+			{
+				if ((this._SafetyStockQty != value))
+				{
+					this.OnSafetyStockQtyChanging(value);
+					this.SendPropertyChanging();
+					this._SafetyStockQty = value;
+					this.SendPropertyChanged("SafetyStockQty");
+					this.OnSafetyStockQtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReorderPoint", DbType="Decimal(20,6) NOT NULL")]
+		public decimal ReorderPoint
+		{
+			get
+			{
+				return this._ReorderPoint;
+			}
+			set
+			{
+				if ((this._ReorderPoint != value))
+				{
+					this.OnReorderPointChanging(value);
+					this.SendPropertyChanging();
+					this._ReorderPoint = value;
+					this.SendPropertyChanged("ReorderPoint");
+					this.OnReorderPointChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReorderQty", DbType="Decimal(20,6) NOT NULL")]
+		public decimal ReorderQty
+		{
+			get
+			{
+				return this._ReorderQty;
+			}
+			set
+			{
+				if ((this._ReorderQty != value))
+				{
+					this.OnReorderQtyChanging(value);
+					this.SendPropertyChanging();
+					this._ReorderQty = value;
+					this.SendPropertyChanged("ReorderQty");
+					this.OnReorderQtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ManufacturingLeadDays", DbType="Int NOT NULL")]
+		public int ManufacturingLeadDays
+		{
+			get
+			{
+				return this._ManufacturingLeadDays;
+			}
+			set
+			{
+				if ((this._ManufacturingLeadDays != value))
+				{
+					this.OnManufacturingLeadDaysChanging(value);
+					this.SendPropertyChanging();
+					this._ManufacturingLeadDays = value;
+					this.SendPropertyChanged("ManufacturingLeadDays");
+					this.OnManufacturingLeadDaysChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RevenueCodeID", DbType="Int")]
+		public System.Nullable<int> RevenueCodeID
+		{
+			get
+			{
+				return this._RevenueCodeID;
+			}
+			set
+			{
+				if ((this._RevenueCodeID != value))
+				{
+					this.OnRevenueCodeIDChanging(value);
+					this.SendPropertyChanging();
+					this._RevenueCodeID = value;
+					this.SendPropertyChanged("RevenueCodeID");
+					this.OnRevenueCodeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryAccountID", DbType="Int")]
+		public System.Nullable<int> InventoryAccountID
+		{
+			get
+			{
+				return this._InventoryAccountID;
+			}
+			set
+			{
+				if ((this._InventoryAccountID != value))
+				{
+					this.OnInventoryAccountIDChanging(value);
+					this.SendPropertyChanging();
+					this._InventoryAccountID = value;
+					this.SendPropertyChanged("InventoryAccountID");
+					this.OnInventoryAccountIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InTransitInventoryAccountID", DbType="Int")]
+		public System.Nullable<int> InTransitInventoryAccountID
+		{
+			get
+			{
+				return this._InTransitInventoryAccountID;
+			}
+			set
+			{
+				if ((this._InTransitInventoryAccountID != value))
+				{
+					this.OnInTransitInventoryAccountIDChanging(value);
+					this.SendPropertyChanging();
+					this._InTransitInventoryAccountID = value;
+					this.SendPropertyChanged("InTransitInventoryAccountID");
+					this.OnInTransitInventoryAccountIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InterimInventoryAccountID", DbType="Int")]
+		public System.Nullable<int> InterimInventoryAccountID
+		{
+			get
+			{
+				return this._InterimInventoryAccountID;
+			}
+			set
+			{
+				if ((this._InterimInventoryAccountID != value))
+				{
+					this.OnInterimInventoryAccountIDChanging(value);
+					this.SendPropertyChanging();
+					this._InterimInventoryAccountID = value;
+					this.SendPropertyChanged("InterimInventoryAccountID");
+					this.OnInterimInventoryAccountIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryVarianceAccountID", DbType="Int")]
+		public System.Nullable<int> InventoryVarianceAccountID
+		{
+			get
+			{
+				return this._InventoryVarianceAccountID;
+			}
+			set
+			{
+				if ((this._InventoryVarianceAccountID != value))
+				{
+					this.OnInventoryVarianceAccountIDChanging(value);
+					this.SendPropertyChanging();
+					this._InventoryVarianceAccountID = value;
+					this.SendPropertyChanged("InventoryVarianceAccountID");
+					this.OnInventoryVarianceAccountIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CostVarianceAccountID", DbType="Int")]
+		public System.Nullable<int> CostVarianceAccountID
+		{
+			get
+			{
+				return this._CostVarianceAccountID;
+			}
+			set
+			{
+				if ((this._CostVarianceAccountID != value))
+				{
+					this.OnCostVarianceAccountIDChanging(value);
+					this.SendPropertyChanging();
+					this._CostVarianceAccountID = value;
+					this.SendPropertyChanged("CostVarianceAccountID");
+					this.OnCostVarianceAccountIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContractCostAccountID", DbType="Int")]
+		public System.Nullable<int> ContractCostAccountID
+		{
+			get
+			{
+				return this._ContractCostAccountID;
+			}
+			set
+			{
+				if ((this._ContractCostAccountID != value))
+				{
+					this.OnContractCostAccountIDChanging(value);
+					this.SendPropertyChanging();
+					this._ContractCostAccountID = value;
+					this.SendPropertyChanged("ContractCostAccountID");
+					this.OnContractCostAccountIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContractObligationAccountID", DbType="Int")]
+		public System.Nullable<int> ContractObligationAccountID
+		{
+			get
+			{
+				return this._ContractObligationAccountID;
+			}
+			set
+			{
+				if ((this._ContractObligationAccountID != value))
+				{
+					this.OnContractObligationAccountIDChanging(value);
+					this.SendPropertyChanging();
+					this._ContractObligationAccountID = value;
+					this.SendPropertyChanged("ContractObligationAccountID");
+					this.OnContractObligationAccountIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContractDiscountAccountID", DbType="Int")]
+		public System.Nullable<int> ContractDiscountAccountID
+		{
+			get
+			{
+				return this._ContractDiscountAccountID;
+			}
+			set
+			{
+				if ((this._ContractDiscountAccountID != value))
+				{
+					this.OnContractDiscountAccountIDChanging(value);
+					this.SendPropertyChanging();
+					this._ContractDiscountAccountID = value;
+					this.SendPropertyChanged("ContractDiscountAccountID");
+					this.OnContractDiscountAccountIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentCost", DbType="Decimal(20,6)")]
+		public System.Nullable<decimal> CurrentCost
+		{
+			get
+			{
+				return this._CurrentCost;
+			}
+			set
+			{
+				if ((this._CurrentCost != value))
+				{
+					this.OnCurrentCostChanging(value);
+					this.SendPropertyChanging();
+					this._CurrentCost = value;
+					this.SendPropertyChanged("CurrentCost");
+					this.OnCurrentCostChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StandardCost", DbType="Decimal(20,6)")]
+		public System.Nullable<decimal> StandardCost
+		{
+			get
+			{
+				return this._StandardCost;
+			}
+			set
+			{
+				if ((this._StandardCost != value))
+				{
+					this.OnStandardCostChanging(value);
+					this.SendPropertyChanging();
+					this._StandardCost = value;
+					this.SendPropertyChanged("StandardCost");
+					this.OnStandardCostChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReturnCost", DbType="Decimal(20,6)")]
+		public System.Nullable<decimal> ReturnCost
+		{
+			get
+			{
+				return this._ReturnCost;
+			}
+			set
+			{
+				if ((this._ReturnCost != value))
+				{
+					this.OnReturnCostChanging(value);
+					this.SendPropertyChanging();
+					this._ReturnCost = value;
+					this.SendPropertyChanged("ReturnCost");
+					this.OnReturnCostChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime2 NOT NULL")]
+		public System.DateTime DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CreatedBy
+		{
+			get
+			{
+				return this._CreatedBy;
+			}
+			set
+			{
+				if ((this._CreatedBy != value))
+				{
+					this.OnCreatedByChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedBy = value;
+					this.SendPropertyChanged("CreatedBy");
+					this.OnCreatedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime2 NOT NULL")]
+		public System.DateTime DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ModifiedBy
+		{
+			get
+			{
+				return this._ModifiedBy;
+			}
+			set
+			{
+				if ((this._ModifiedBy != value))
+				{
+					this.OnModifiedByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedBy = value;
+					this.SendPropertyChanged("ModifiedBy");
+					this.OnModifiedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Inventory_InventoryWarehouse", Storage="_Inventory", ThisKey="InventoryID", OtherKey="ID", IsForeignKey=true)]
+		public Inventory Inventory
+		{
+			get
+			{
+				return this._Inventory.Entity;
+			}
+			set
+			{
+				Inventory previousValue = this._Inventory.Entity;
+				if (((previousValue != value) 
+							|| (this._Inventory.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Inventory.Entity = null;
+						previousValue.InventoryWarehouses.Remove(this);
+					}
+					this._Inventory.Entity = value;
+					if ((value != null))
+					{
+						value.InventoryWarehouses.Add(this);
+						this._InventoryID = value.ID;
+					}
+					else
+					{
+						this._InventoryID = default(int);
+					}
+					this.SendPropertyChanged("Inventory");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InventoryTierPrice")]
+	public partial class InventoryTierPrice : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _InventoryPriceID;
+		
+		private decimal _QuantityBreak;
+		
+		private decimal _MarkupPercentage;
+		
+		private decimal _MarkupAmount;
+		
+		private decimal _UnitPrice;
+		
+		private System.DateTime _StartDate;
+		
+		private System.DateTime _DateCreated;
+		
+		private string _CreatedBy;
+		
+		private System.DateTime _DateModified;
+		
+		private string _ModifiedBy;
+		
+		private EntityRef<InventoryPrice> _InventoryPrice;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnInventoryPriceIDChanging(int value);
+    partial void OnInventoryPriceIDChanged();
+    partial void OnQuantityBreakChanging(decimal value);
+    partial void OnQuantityBreakChanged();
+    partial void OnMarkupPercentageChanging(decimal value);
+    partial void OnMarkupPercentageChanged();
+    partial void OnMarkupAmountChanging(decimal value);
+    partial void OnMarkupAmountChanged();
+    partial void OnUnitPriceChanging(decimal value);
+    partial void OnUnitPriceChanged();
+    partial void OnStartDateChanging(System.DateTime value);
+    partial void OnStartDateChanged();
+    partial void OnDateCreatedChanging(System.DateTime value);
+    partial void OnDateCreatedChanged();
+    partial void OnCreatedByChanging(string value);
+    partial void OnCreatedByChanged();
+    partial void OnDateModifiedChanging(System.DateTime value);
+    partial void OnDateModifiedChanged();
+    partial void OnModifiedByChanging(string value);
+    partial void OnModifiedByChanged();
+    #endregion
+		
+		public InventoryTierPrice()
+		{
+			this._InventoryPrice = default(EntityRef<InventoryPrice>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryPriceID", DbType="Int NOT NULL")]
+		public int InventoryPriceID
+		{
+			get
+			{
+				return this._InventoryPriceID;
+			}
+			set
+			{
+				if ((this._InventoryPriceID != value))
+				{
+					if (this._InventoryPrice.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnInventoryPriceIDChanging(value);
+					this.SendPropertyChanging();
+					this._InventoryPriceID = value;
+					this.SendPropertyChanged("InventoryPriceID");
+					this.OnInventoryPriceIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuantityBreak", DbType="Decimal(20,6) NOT NULL")]
+		public decimal QuantityBreak
+		{
+			get
+			{
+				return this._QuantityBreak;
+			}
+			set
+			{
+				if ((this._QuantityBreak != value))
+				{
+					this.OnQuantityBreakChanging(value);
+					this.SendPropertyChanging();
+					this._QuantityBreak = value;
+					this.SendPropertyChanged("QuantityBreak");
+					this.OnQuantityBreakChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MarkupPercentage", DbType="Decimal(7,4) NOT NULL")]
+		public decimal MarkupPercentage
+		{
+			get
+			{
+				return this._MarkupPercentage;
+			}
+			set
+			{
+				if ((this._MarkupPercentage != value))
+				{
+					this.OnMarkupPercentageChanging(value);
+					this.SendPropertyChanging();
+					this._MarkupPercentage = value;
+					this.SendPropertyChanged("MarkupPercentage");
+					this.OnMarkupPercentageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MarkupAmount", DbType="Decimal(20,6) NOT NULL")]
+		public decimal MarkupAmount
+		{
+			get
+			{
+				return this._MarkupAmount;
+			}
+			set
+			{
+				if ((this._MarkupAmount != value))
+				{
+					this.OnMarkupAmountChanging(value);
+					this.SendPropertyChanging();
+					this._MarkupAmount = value;
+					this.SendPropertyChanged("MarkupAmount");
+					this.OnMarkupAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitPrice", DbType="Decimal(20,6) NOT NULL")]
+		public decimal UnitPrice
+		{
+			get
+			{
+				return this._UnitPrice;
+			}
+			set
+			{
+				if ((this._UnitPrice != value))
+				{
+					this.OnUnitPriceChanging(value);
+					this.SendPropertyChanging();
+					this._UnitPrice = value;
+					this.SendPropertyChanged("UnitPrice");
+					this.OnUnitPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date NOT NULL")]
+		public System.DateTime StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime2 NOT NULL")]
+		public System.DateTime DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CreatedBy
+		{
+			get
+			{
+				return this._CreatedBy;
+			}
+			set
+			{
+				if ((this._CreatedBy != value))
+				{
+					this.OnCreatedByChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedBy = value;
+					this.SendPropertyChanged("CreatedBy");
+					this.OnCreatedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime2 NOT NULL")]
+		public System.DateTime DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ModifiedBy
+		{
+			get
+			{
+				return this._ModifiedBy;
+			}
+			set
+			{
+				if ((this._ModifiedBy != value))
+				{
+					this.OnModifiedByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedBy = value;
+					this.SendPropertyChanged("ModifiedBy");
+					this.OnModifiedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InventoryPrice_InventoryTierPrice", Storage="_InventoryPrice", ThisKey="InventoryPriceID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public InventoryPrice InventoryPrice
+		{
+			get
+			{
+				return this._InventoryPrice.Entity;
+			}
+			set
+			{
+				InventoryPrice previousValue = this._InventoryPrice.Entity;
+				if (((previousValue != value) 
+							|| (this._InventoryPrice.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._InventoryPrice.Entity = null;
+						previousValue.InventoryTierPrices.Remove(this);
+					}
+					this._InventoryPrice.Entity = value;
+					if ((value != null))
+					{
+						value.InventoryTierPrices.Add(this);
+						this._InventoryPriceID = value.ID;
+					}
+					else
+					{
+						this._InventoryPriceID = default(int);
+					}
+					this.SendPropertyChanged("InventoryPrice");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InventorySpecialPrice")]
+	public partial class InventorySpecialPrice : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _InventoryPriceID;
+		
+		private decimal _SpecialPrice;
+		
+		private System.DateTime _StartDate;
+		
+		private System.DateTime _EndDate;
+		
+		private System.DateTime _DateCreated;
+		
+		private string _CreatedBy;
+		
+		private System.DateTime _DateModified;
+		
+		private string _ModifiedBy;
+		
+		private EntityRef<InventoryPrice> _InventoryPrice;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnInventoryPriceIDChanging(int value);
+    partial void OnInventoryPriceIDChanged();
+    partial void OnSpecialPriceChanging(decimal value);
+    partial void OnSpecialPriceChanged();
+    partial void OnStartDateChanging(System.DateTime value);
+    partial void OnStartDateChanged();
+    partial void OnEndDateChanging(System.DateTime value);
+    partial void OnEndDateChanged();
+    partial void OnDateCreatedChanging(System.DateTime value);
+    partial void OnDateCreatedChanged();
+    partial void OnCreatedByChanging(string value);
+    partial void OnCreatedByChanged();
+    partial void OnDateModifiedChanging(System.DateTime value);
+    partial void OnDateModifiedChanged();
+    partial void OnModifiedByChanging(string value);
+    partial void OnModifiedByChanged();
+    #endregion
+		
+		public InventorySpecialPrice()
+		{
+			this._InventoryPrice = default(EntityRef<InventoryPrice>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryPriceID", DbType="Int NOT NULL")]
+		public int InventoryPriceID
+		{
+			get
+			{
+				return this._InventoryPriceID;
+			}
+			set
+			{
+				if ((this._InventoryPriceID != value))
+				{
+					if (this._InventoryPrice.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnInventoryPriceIDChanging(value);
+					this.SendPropertyChanging();
+					this._InventoryPriceID = value;
+					this.SendPropertyChanged("InventoryPriceID");
+					this.OnInventoryPriceIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SpecialPrice", DbType="Decimal(20,6) NOT NULL")]
+		public decimal SpecialPrice
+		{
+			get
+			{
+				return this._SpecialPrice;
+			}
+			set
+			{
+				if ((this._SpecialPrice != value))
+				{
+					this.OnSpecialPriceChanging(value);
+					this.SendPropertyChanging();
+					this._SpecialPrice = value;
+					this.SendPropertyChanged("SpecialPrice");
+					this.OnSpecialPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date NOT NULL")]
+		public System.DateTime StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="Date NOT NULL")]
+		public System.DateTime EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this.OnEndDateChanging(value);
+					this.SendPropertyChanging();
+					this._EndDate = value;
+					this.SendPropertyChanged("EndDate");
+					this.OnEndDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime2 NOT NULL")]
+		public System.DateTime DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CreatedBy
+		{
+			get
+			{
+				return this._CreatedBy;
+			}
+			set
+			{
+				if ((this._CreatedBy != value))
+				{
+					this.OnCreatedByChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedBy = value;
+					this.SendPropertyChanged("CreatedBy");
+					this.OnCreatedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime2 NOT NULL")]
+		public System.DateTime DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ModifiedBy
+		{
+			get
+			{
+				return this._ModifiedBy;
+			}
+			set
+			{
+				if ((this._ModifiedBy != value))
+				{
+					this.OnModifiedByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedBy = value;
+					this.SendPropertyChanged("ModifiedBy");
+					this.OnModifiedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InventoryPrice_InventorySpecialPrice", Storage="_InventoryPrice", ThisKey="InventoryPriceID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public InventoryPrice InventoryPrice
+		{
+			get
+			{
+				return this._InventoryPrice.Entity;
+			}
+			set
+			{
+				InventoryPrice previousValue = this._InventoryPrice.Entity;
+				if (((previousValue != value) 
+							|| (this._InventoryPrice.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._InventoryPrice.Entity = null;
+						previousValue.InventorySpecialPrices.Remove(this);
+					}
+					this._InventoryPrice.Entity = value;
+					if ((value != null))
+					{
+						value.InventorySpecialPrices.Add(this);
+						this._InventoryPriceID = value.ID;
+					}
+					else
+					{
+						this._InventoryPriceID = default(int);
+					}
+					this.SendPropertyChanged("InventoryPrice");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -4227,2182 +6340,6 @@ namespace AccountMateWebOrder.Data
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InventoryWarehouse")]
-	public partial class InventoryWarehouse : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _ID;
-		
-		private int _InventoryID;
-		
-		private int _WarehouseID;
-		
-		private System.Nullable<int> _InventorySpecID;
-		
-		private int _Sequence;
-		
-		private decimal _OnhandQty;
-		
-		private decimal _AverageCost;
-		
-		private short _Status;
-		
-		private decimal _SafetyStockQty;
-		
-		private decimal _ReorderPoint;
-		
-		private decimal _ReorderQty;
-		
-		private int _ManufacturingLeadDays;
-		
-		private System.Nullable<int> _RevenueCodeID;
-		
-		private System.Nullable<int> _InventoryAccountID;
-		
-		private System.Nullable<int> _InTransitInventoryAccountID;
-		
-		private System.Nullable<int> _InterimInventoryAccountID;
-		
-		private System.Nullable<int> _InventoryVarianceAccountID;
-		
-		private System.Nullable<int> _CostVarianceAccountID;
-		
-		private System.Nullable<int> _ContractCostAccountID;
-		
-		private System.Nullable<int> _ContractObligationAccountID;
-		
-		private System.Nullable<int> _ContractDiscountAccountID;
-		
-		private System.Nullable<decimal> _CurrentCost;
-		
-		private System.Nullable<decimal> _StandardCost;
-		
-		private System.Nullable<decimal> _ReturnCost;
-		
-		private System.DateTime _DateCreated;
-		
-		private string _CreatedBy;
-		
-		private System.DateTime _DateModified;
-		
-		private string _ModifiedBy;
-		
-		private EntityRef<Inventory> _Inventory;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(long value);
-    partial void OnIDChanged();
-    partial void OnInventoryIDChanging(int value);
-    partial void OnInventoryIDChanged();
-    partial void OnWarehouseIDChanging(int value);
-    partial void OnWarehouseIDChanged();
-    partial void OnInventorySpecIDChanging(System.Nullable<int> value);
-    partial void OnInventorySpecIDChanged();
-    partial void OnSequenceChanging(int value);
-    partial void OnSequenceChanged();
-    partial void OnOnhandQtyChanging(decimal value);
-    partial void OnOnhandQtyChanged();
-    partial void OnAverageCostChanging(decimal value);
-    partial void OnAverageCostChanged();
-    partial void OnStatusChanging(short value);
-    partial void OnStatusChanged();
-    partial void OnSafetyStockQtyChanging(decimal value);
-    partial void OnSafetyStockQtyChanged();
-    partial void OnReorderPointChanging(decimal value);
-    partial void OnReorderPointChanged();
-    partial void OnReorderQtyChanging(decimal value);
-    partial void OnReorderQtyChanged();
-    partial void OnManufacturingLeadDaysChanging(int value);
-    partial void OnManufacturingLeadDaysChanged();
-    partial void OnRevenueCodeIDChanging(System.Nullable<int> value);
-    partial void OnRevenueCodeIDChanged();
-    partial void OnInventoryAccountIDChanging(System.Nullable<int> value);
-    partial void OnInventoryAccountIDChanged();
-    partial void OnInTransitInventoryAccountIDChanging(System.Nullable<int> value);
-    partial void OnInTransitInventoryAccountIDChanged();
-    partial void OnInterimInventoryAccountIDChanging(System.Nullable<int> value);
-    partial void OnInterimInventoryAccountIDChanged();
-    partial void OnInventoryVarianceAccountIDChanging(System.Nullable<int> value);
-    partial void OnInventoryVarianceAccountIDChanged();
-    partial void OnCostVarianceAccountIDChanging(System.Nullable<int> value);
-    partial void OnCostVarianceAccountIDChanged();
-    partial void OnContractCostAccountIDChanging(System.Nullable<int> value);
-    partial void OnContractCostAccountIDChanged();
-    partial void OnContractObligationAccountIDChanging(System.Nullable<int> value);
-    partial void OnContractObligationAccountIDChanged();
-    partial void OnContractDiscountAccountIDChanging(System.Nullable<int> value);
-    partial void OnContractDiscountAccountIDChanged();
-    partial void OnCurrentCostChanging(System.Nullable<decimal> value);
-    partial void OnCurrentCostChanged();
-    partial void OnStandardCostChanging(System.Nullable<decimal> value);
-    partial void OnStandardCostChanged();
-    partial void OnReturnCostChanging(System.Nullable<decimal> value);
-    partial void OnReturnCostChanged();
-    partial void OnDateCreatedChanging(System.DateTime value);
-    partial void OnDateCreatedChanged();
-    partial void OnCreatedByChanging(string value);
-    partial void OnCreatedByChanged();
-    partial void OnDateModifiedChanging(System.DateTime value);
-    partial void OnDateModifiedChanged();
-    partial void OnModifiedByChanging(string value);
-    partial void OnModifiedByChanged();
-    #endregion
-		
-		public InventoryWarehouse()
-		{
-			this._Inventory = default(EntityRef<Inventory>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryID", DbType="Int NOT NULL")]
-		public int InventoryID
-		{
-			get
-			{
-				return this._InventoryID;
-			}
-			set
-			{
-				if ((this._InventoryID != value))
-				{
-					if (this._Inventory.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnInventoryIDChanging(value);
-					this.SendPropertyChanging();
-					this._InventoryID = value;
-					this.SendPropertyChanged("InventoryID");
-					this.OnInventoryIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WarehouseID", DbType="Int NOT NULL")]
-		public int WarehouseID
-		{
-			get
-			{
-				return this._WarehouseID;
-			}
-			set
-			{
-				if ((this._WarehouseID != value))
-				{
-					this.OnWarehouseIDChanging(value);
-					this.SendPropertyChanging();
-					this._WarehouseID = value;
-					this.SendPropertyChanged("WarehouseID");
-					this.OnWarehouseIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventorySpecID", DbType="Int")]
-		public System.Nullable<int> InventorySpecID
-		{
-			get
-			{
-				return this._InventorySpecID;
-			}
-			set
-			{
-				if ((this._InventorySpecID != value))
-				{
-					this.OnInventorySpecIDChanging(value);
-					this.SendPropertyChanging();
-					this._InventorySpecID = value;
-					this.SendPropertyChanged("InventorySpecID");
-					this.OnInventorySpecIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sequence", DbType="Int NOT NULL")]
-		public int Sequence
-		{
-			get
-			{
-				return this._Sequence;
-			}
-			set
-			{
-				if ((this._Sequence != value))
-				{
-					this.OnSequenceChanging(value);
-					this.SendPropertyChanging();
-					this._Sequence = value;
-					this.SendPropertyChanged("Sequence");
-					this.OnSequenceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OnhandQty", DbType="Decimal(20,6) NOT NULL")]
-		public decimal OnhandQty
-		{
-			get
-			{
-				return this._OnhandQty;
-			}
-			set
-			{
-				if ((this._OnhandQty != value))
-				{
-					this.OnOnhandQtyChanging(value);
-					this.SendPropertyChanging();
-					this._OnhandQty = value;
-					this.SendPropertyChanged("OnhandQty");
-					this.OnOnhandQtyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AverageCost", DbType="Decimal(20,6) NOT NULL")]
-		public decimal AverageCost
-		{
-			get
-			{
-				return this._AverageCost;
-			}
-			set
-			{
-				if ((this._AverageCost != value))
-				{
-					this.OnAverageCostChanging(value);
-					this.SendPropertyChanging();
-					this._AverageCost = value;
-					this.SendPropertyChanged("AverageCost");
-					this.OnAverageCostChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="SmallInt NOT NULL")]
-		public short Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SafetyStockQty", DbType="Decimal(20,6) NOT NULL")]
-		public decimal SafetyStockQty
-		{
-			get
-			{
-				return this._SafetyStockQty;
-			}
-			set
-			{
-				if ((this._SafetyStockQty != value))
-				{
-					this.OnSafetyStockQtyChanging(value);
-					this.SendPropertyChanging();
-					this._SafetyStockQty = value;
-					this.SendPropertyChanged("SafetyStockQty");
-					this.OnSafetyStockQtyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReorderPoint", DbType="Decimal(20,6) NOT NULL")]
-		public decimal ReorderPoint
-		{
-			get
-			{
-				return this._ReorderPoint;
-			}
-			set
-			{
-				if ((this._ReorderPoint != value))
-				{
-					this.OnReorderPointChanging(value);
-					this.SendPropertyChanging();
-					this._ReorderPoint = value;
-					this.SendPropertyChanged("ReorderPoint");
-					this.OnReorderPointChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReorderQty", DbType="Decimal(20,6) NOT NULL")]
-		public decimal ReorderQty
-		{
-			get
-			{
-				return this._ReorderQty;
-			}
-			set
-			{
-				if ((this._ReorderQty != value))
-				{
-					this.OnReorderQtyChanging(value);
-					this.SendPropertyChanging();
-					this._ReorderQty = value;
-					this.SendPropertyChanged("ReorderQty");
-					this.OnReorderQtyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ManufacturingLeadDays", DbType="Int NOT NULL")]
-		public int ManufacturingLeadDays
-		{
-			get
-			{
-				return this._ManufacturingLeadDays;
-			}
-			set
-			{
-				if ((this._ManufacturingLeadDays != value))
-				{
-					this.OnManufacturingLeadDaysChanging(value);
-					this.SendPropertyChanging();
-					this._ManufacturingLeadDays = value;
-					this.SendPropertyChanged("ManufacturingLeadDays");
-					this.OnManufacturingLeadDaysChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RevenueCodeID", DbType="Int")]
-		public System.Nullable<int> RevenueCodeID
-		{
-			get
-			{
-				return this._RevenueCodeID;
-			}
-			set
-			{
-				if ((this._RevenueCodeID != value))
-				{
-					this.OnRevenueCodeIDChanging(value);
-					this.SendPropertyChanging();
-					this._RevenueCodeID = value;
-					this.SendPropertyChanged("RevenueCodeID");
-					this.OnRevenueCodeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryAccountID", DbType="Int")]
-		public System.Nullable<int> InventoryAccountID
-		{
-			get
-			{
-				return this._InventoryAccountID;
-			}
-			set
-			{
-				if ((this._InventoryAccountID != value))
-				{
-					this.OnInventoryAccountIDChanging(value);
-					this.SendPropertyChanging();
-					this._InventoryAccountID = value;
-					this.SendPropertyChanged("InventoryAccountID");
-					this.OnInventoryAccountIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InTransitInventoryAccountID", DbType="Int")]
-		public System.Nullable<int> InTransitInventoryAccountID
-		{
-			get
-			{
-				return this._InTransitInventoryAccountID;
-			}
-			set
-			{
-				if ((this._InTransitInventoryAccountID != value))
-				{
-					this.OnInTransitInventoryAccountIDChanging(value);
-					this.SendPropertyChanging();
-					this._InTransitInventoryAccountID = value;
-					this.SendPropertyChanged("InTransitInventoryAccountID");
-					this.OnInTransitInventoryAccountIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InterimInventoryAccountID", DbType="Int")]
-		public System.Nullable<int> InterimInventoryAccountID
-		{
-			get
-			{
-				return this._InterimInventoryAccountID;
-			}
-			set
-			{
-				if ((this._InterimInventoryAccountID != value))
-				{
-					this.OnInterimInventoryAccountIDChanging(value);
-					this.SendPropertyChanging();
-					this._InterimInventoryAccountID = value;
-					this.SendPropertyChanged("InterimInventoryAccountID");
-					this.OnInterimInventoryAccountIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryVarianceAccountID", DbType="Int")]
-		public System.Nullable<int> InventoryVarianceAccountID
-		{
-			get
-			{
-				return this._InventoryVarianceAccountID;
-			}
-			set
-			{
-				if ((this._InventoryVarianceAccountID != value))
-				{
-					this.OnInventoryVarianceAccountIDChanging(value);
-					this.SendPropertyChanging();
-					this._InventoryVarianceAccountID = value;
-					this.SendPropertyChanged("InventoryVarianceAccountID");
-					this.OnInventoryVarianceAccountIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CostVarianceAccountID", DbType="Int")]
-		public System.Nullable<int> CostVarianceAccountID
-		{
-			get
-			{
-				return this._CostVarianceAccountID;
-			}
-			set
-			{
-				if ((this._CostVarianceAccountID != value))
-				{
-					this.OnCostVarianceAccountIDChanging(value);
-					this.SendPropertyChanging();
-					this._CostVarianceAccountID = value;
-					this.SendPropertyChanged("CostVarianceAccountID");
-					this.OnCostVarianceAccountIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContractCostAccountID", DbType="Int")]
-		public System.Nullable<int> ContractCostAccountID
-		{
-			get
-			{
-				return this._ContractCostAccountID;
-			}
-			set
-			{
-				if ((this._ContractCostAccountID != value))
-				{
-					this.OnContractCostAccountIDChanging(value);
-					this.SendPropertyChanging();
-					this._ContractCostAccountID = value;
-					this.SendPropertyChanged("ContractCostAccountID");
-					this.OnContractCostAccountIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContractObligationAccountID", DbType="Int")]
-		public System.Nullable<int> ContractObligationAccountID
-		{
-			get
-			{
-				return this._ContractObligationAccountID;
-			}
-			set
-			{
-				if ((this._ContractObligationAccountID != value))
-				{
-					this.OnContractObligationAccountIDChanging(value);
-					this.SendPropertyChanging();
-					this._ContractObligationAccountID = value;
-					this.SendPropertyChanged("ContractObligationAccountID");
-					this.OnContractObligationAccountIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContractDiscountAccountID", DbType="Int")]
-		public System.Nullable<int> ContractDiscountAccountID
-		{
-			get
-			{
-				return this._ContractDiscountAccountID;
-			}
-			set
-			{
-				if ((this._ContractDiscountAccountID != value))
-				{
-					this.OnContractDiscountAccountIDChanging(value);
-					this.SendPropertyChanging();
-					this._ContractDiscountAccountID = value;
-					this.SendPropertyChanged("ContractDiscountAccountID");
-					this.OnContractDiscountAccountIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentCost", DbType="Decimal(20,6)")]
-		public System.Nullable<decimal> CurrentCost
-		{
-			get
-			{
-				return this._CurrentCost;
-			}
-			set
-			{
-				if ((this._CurrentCost != value))
-				{
-					this.OnCurrentCostChanging(value);
-					this.SendPropertyChanging();
-					this._CurrentCost = value;
-					this.SendPropertyChanged("CurrentCost");
-					this.OnCurrentCostChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StandardCost", DbType="Decimal(20,6)")]
-		public System.Nullable<decimal> StandardCost
-		{
-			get
-			{
-				return this._StandardCost;
-			}
-			set
-			{
-				if ((this._StandardCost != value))
-				{
-					this.OnStandardCostChanging(value);
-					this.SendPropertyChanging();
-					this._StandardCost = value;
-					this.SendPropertyChanged("StandardCost");
-					this.OnStandardCostChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReturnCost", DbType="Decimal(20,6)")]
-		public System.Nullable<decimal> ReturnCost
-		{
-			get
-			{
-				return this._ReturnCost;
-			}
-			set
-			{
-				if ((this._ReturnCost != value))
-				{
-					this.OnReturnCostChanging(value);
-					this.SendPropertyChanging();
-					this._ReturnCost = value;
-					this.SendPropertyChanged("ReturnCost");
-					this.OnReturnCostChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime2 NOT NULL")]
-		public System.DateTime DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this.OnDateCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCreated = value;
-					this.SendPropertyChanged("DateCreated");
-					this.OnDateCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string CreatedBy
-		{
-			get
-			{
-				return this._CreatedBy;
-			}
-			set
-			{
-				if ((this._CreatedBy != value))
-				{
-					this.OnCreatedByChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedBy = value;
-					this.SendPropertyChanged("CreatedBy");
-					this.OnCreatedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime2 NOT NULL")]
-		public System.DateTime DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this.OnDateModifiedChanging(value);
-					this.SendPropertyChanging();
-					this._DateModified = value;
-					this.SendPropertyChanged("DateModified");
-					this.OnDateModifiedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ModifiedBy
-		{
-			get
-			{
-				return this._ModifiedBy;
-			}
-			set
-			{
-				if ((this._ModifiedBy != value))
-				{
-					this.OnModifiedByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedBy = value;
-					this.SendPropertyChanged("ModifiedBy");
-					this.OnModifiedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Inventory_InventoryWarehouse", Storage="_Inventory", ThisKey="InventoryID", OtherKey="ID", IsForeignKey=true)]
-		public Inventory Inventory
-		{
-			get
-			{
-				return this._Inventory.Entity;
-			}
-			set
-			{
-				Inventory previousValue = this._Inventory.Entity;
-				if (((previousValue != value) 
-							|| (this._Inventory.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Inventory.Entity = null;
-						previousValue.InventoryWarehouses.Remove(this);
-					}
-					this._Inventory.Entity = value;
-					if ((value != null))
-					{
-						value.InventoryWarehouses.Add(this);
-						this._InventoryID = value.ID;
-					}
-					else
-					{
-						this._InventoryID = default(int);
-					}
-					this.SendPropertyChanged("Inventory");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InventoryPrice")]
-	public partial class InventoryPrice : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _InventoryID;
-		
-		private System.Nullable<int> _InventorySpecID;
-		
-		private int _UOMID;
-		
-		private int _CurrencyID;
-		
-		private byte _PriceDecimalPlaces;
-		
-		private decimal _MinimumPrice;
-		
-		private System.Nullable<int> _CustomerPriceGroupID;
-		
-		private System.Nullable<byte> _PriceType;
-		
-		private System.DateTime _DateCreated;
-		
-		private string _CreatedBy;
-		
-		private System.DateTime _DateModified;
-		
-		private string _ModifiedBy;
-		
-		private EntitySet<InventoryListPrice> _InventoryListPrices;
-		
-		private EntitySet<InventorySpecialPrice> _InventorySpecialPrices;
-		
-		private EntitySet<InventoryTierPrice> _InventoryTierPrices;
-		
-		private EntityRef<Inventory> _Inventory;
-		
-		private EntityRef<UnitOfMeasure> _UnitOfMeasure;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnInventoryIDChanging(int value);
-    partial void OnInventoryIDChanged();
-    partial void OnInventorySpecIDChanging(System.Nullable<int> value);
-    partial void OnInventorySpecIDChanged();
-    partial void OnUOMIDChanging(int value);
-    partial void OnUOMIDChanged();
-    partial void OnCurrencyIDChanging(int value);
-    partial void OnCurrencyIDChanged();
-    partial void OnPriceDecimalPlacesChanging(byte value);
-    partial void OnPriceDecimalPlacesChanged();
-    partial void OnMinimumPriceChanging(decimal value);
-    partial void OnMinimumPriceChanged();
-    partial void OnCustomerPriceGroupIDChanging(System.Nullable<int> value);
-    partial void OnCustomerPriceGroupIDChanged();
-    partial void OnPriceTypeChanging(System.Nullable<byte> value);
-    partial void OnPriceTypeChanged();
-    partial void OnDateCreatedChanging(System.DateTime value);
-    partial void OnDateCreatedChanged();
-    partial void OnCreatedByChanging(string value);
-    partial void OnCreatedByChanged();
-    partial void OnDateModifiedChanging(System.DateTime value);
-    partial void OnDateModifiedChanged();
-    partial void OnModifiedByChanging(string value);
-    partial void OnModifiedByChanged();
-    #endregion
-		
-		public InventoryPrice()
-		{
-			this._InventoryListPrices = new EntitySet<InventoryListPrice>(new Action<InventoryListPrice>(this.attach_InventoryListPrices), new Action<InventoryListPrice>(this.detach_InventoryListPrices));
-			this._InventorySpecialPrices = new EntitySet<InventorySpecialPrice>(new Action<InventorySpecialPrice>(this.attach_InventorySpecialPrices), new Action<InventorySpecialPrice>(this.detach_InventorySpecialPrices));
-			this._InventoryTierPrices = new EntitySet<InventoryTierPrice>(new Action<InventoryTierPrice>(this.attach_InventoryTierPrices), new Action<InventoryTierPrice>(this.detach_InventoryTierPrices));
-			this._Inventory = default(EntityRef<Inventory>);
-			this._UnitOfMeasure = default(EntityRef<UnitOfMeasure>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryID", DbType="Int NOT NULL")]
-		public int InventoryID
-		{
-			get
-			{
-				return this._InventoryID;
-			}
-			set
-			{
-				if ((this._InventoryID != value))
-				{
-					if (this._Inventory.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnInventoryIDChanging(value);
-					this.SendPropertyChanging();
-					this._InventoryID = value;
-					this.SendPropertyChanged("InventoryID");
-					this.OnInventoryIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventorySpecID", DbType="Int")]
-		public System.Nullable<int> InventorySpecID
-		{
-			get
-			{
-				return this._InventorySpecID;
-			}
-			set
-			{
-				if ((this._InventorySpecID != value))
-				{
-					this.OnInventorySpecIDChanging(value);
-					this.SendPropertyChanging();
-					this._InventorySpecID = value;
-					this.SendPropertyChanged("InventorySpecID");
-					this.OnInventorySpecIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UOMID", DbType="Int NOT NULL")]
-		public int UOMID
-		{
-			get
-			{
-				return this._UOMID;
-			}
-			set
-			{
-				if ((this._UOMID != value))
-				{
-					if (this._UnitOfMeasure.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUOMIDChanging(value);
-					this.SendPropertyChanging();
-					this._UOMID = value;
-					this.SendPropertyChanged("UOMID");
-					this.OnUOMIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrencyID", DbType="Int NOT NULL")]
-		public int CurrencyID
-		{
-			get
-			{
-				return this._CurrencyID;
-			}
-			set
-			{
-				if ((this._CurrencyID != value))
-				{
-					this.OnCurrencyIDChanging(value);
-					this.SendPropertyChanging();
-					this._CurrencyID = value;
-					this.SendPropertyChanged("CurrencyID");
-					this.OnCurrencyIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceDecimalPlaces", DbType="TinyInt NOT NULL")]
-		public byte PriceDecimalPlaces
-		{
-			get
-			{
-				return this._PriceDecimalPlaces;
-			}
-			set
-			{
-				if ((this._PriceDecimalPlaces != value))
-				{
-					this.OnPriceDecimalPlacesChanging(value);
-					this.SendPropertyChanging();
-					this._PriceDecimalPlaces = value;
-					this.SendPropertyChanged("PriceDecimalPlaces");
-					this.OnPriceDecimalPlacesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinimumPrice", DbType="Decimal(20,6) NOT NULL")]
-		public decimal MinimumPrice
-		{
-			get
-			{
-				return this._MinimumPrice;
-			}
-			set
-			{
-				if ((this._MinimumPrice != value))
-				{
-					this.OnMinimumPriceChanging(value);
-					this.SendPropertyChanging();
-					this._MinimumPrice = value;
-					this.SendPropertyChanged("MinimumPrice");
-					this.OnMinimumPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerPriceGroupID", DbType="Int")]
-		public System.Nullable<int> CustomerPriceGroupID
-		{
-			get
-			{
-				return this._CustomerPriceGroupID;
-			}
-			set
-			{
-				if ((this._CustomerPriceGroupID != value))
-				{
-					this.OnCustomerPriceGroupIDChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerPriceGroupID = value;
-					this.SendPropertyChanged("CustomerPriceGroupID");
-					this.OnCustomerPriceGroupIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceType", DbType="TinyInt")]
-		public System.Nullable<byte> PriceType
-		{
-			get
-			{
-				return this._PriceType;
-			}
-			set
-			{
-				if ((this._PriceType != value))
-				{
-					this.OnPriceTypeChanging(value);
-					this.SendPropertyChanging();
-					this._PriceType = value;
-					this.SendPropertyChanged("PriceType");
-					this.OnPriceTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime2 NOT NULL")]
-		public System.DateTime DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this.OnDateCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCreated = value;
-					this.SendPropertyChanged("DateCreated");
-					this.OnDateCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string CreatedBy
-		{
-			get
-			{
-				return this._CreatedBy;
-			}
-			set
-			{
-				if ((this._CreatedBy != value))
-				{
-					this.OnCreatedByChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedBy = value;
-					this.SendPropertyChanged("CreatedBy");
-					this.OnCreatedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime2 NOT NULL")]
-		public System.DateTime DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this.OnDateModifiedChanging(value);
-					this.SendPropertyChanging();
-					this._DateModified = value;
-					this.SendPropertyChanged("DateModified");
-					this.OnDateModifiedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ModifiedBy
-		{
-			get
-			{
-				return this._ModifiedBy;
-			}
-			set
-			{
-				if ((this._ModifiedBy != value))
-				{
-					this.OnModifiedByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedBy = value;
-					this.SendPropertyChanged("ModifiedBy");
-					this.OnModifiedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InventoryPrice_InventoryListPrice", Storage="_InventoryListPrices", ThisKey="ID", OtherKey="InventoryPriceID")]
-		public EntitySet<InventoryListPrice> InventoryListPrices
-		{
-			get
-			{
-				return this._InventoryListPrices;
-			}
-			set
-			{
-				this._InventoryListPrices.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InventoryPrice_InventorySpecialPrice", Storage="_InventorySpecialPrices", ThisKey="ID", OtherKey="InventoryPriceID")]
-		public EntitySet<InventorySpecialPrice> InventorySpecialPrices
-		{
-			get
-			{
-				return this._InventorySpecialPrices;
-			}
-			set
-			{
-				this._InventorySpecialPrices.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InventoryPrice_InventoryTierPrice", Storage="_InventoryTierPrices", ThisKey="ID", OtherKey="InventoryPriceID")]
-		public EntitySet<InventoryTierPrice> InventoryTierPrices
-		{
-			get
-			{
-				return this._InventoryTierPrices;
-			}
-			set
-			{
-				this._InventoryTierPrices.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Inventory_InventoryPrice", Storage="_Inventory", ThisKey="InventoryID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Inventory Inventory
-		{
-			get
-			{
-				return this._Inventory.Entity;
-			}
-			set
-			{
-				Inventory previousValue = this._Inventory.Entity;
-				if (((previousValue != value) 
-							|| (this._Inventory.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Inventory.Entity = null;
-						previousValue.InventoryPrices.Remove(this);
-					}
-					this._Inventory.Entity = value;
-					if ((value != null))
-					{
-						value.InventoryPrices.Add(this);
-						this._InventoryID = value.ID;
-					}
-					else
-					{
-						this._InventoryID = default(int);
-					}
-					this.SendPropertyChanged("Inventory");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UnitOfMeasure_InventoryPrice", Storage="_UnitOfMeasure", ThisKey="UOMID", OtherKey="ID", IsForeignKey=true)]
-		public UnitOfMeasure UnitOfMeasure
-		{
-			get
-			{
-				return this._UnitOfMeasure.Entity;
-			}
-			set
-			{
-				UnitOfMeasure previousValue = this._UnitOfMeasure.Entity;
-				if (((previousValue != value) 
-							|| (this._UnitOfMeasure.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UnitOfMeasure.Entity = null;
-						previousValue.InventoryPrices.Remove(this);
-					}
-					this._UnitOfMeasure.Entity = value;
-					if ((value != null))
-					{
-						value.InventoryPrices.Add(this);
-						this._UOMID = value.ID;
-					}
-					else
-					{
-						this._UOMID = default(int);
-					}
-					this.SendPropertyChanged("UnitOfMeasure");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_InventoryListPrices(InventoryListPrice entity)
-		{
-			this.SendPropertyChanging();
-			entity.InventoryPrice = this;
-		}
-		
-		private void detach_InventoryListPrices(InventoryListPrice entity)
-		{
-			this.SendPropertyChanging();
-			entity.InventoryPrice = null;
-		}
-		
-		private void attach_InventorySpecialPrices(InventorySpecialPrice entity)
-		{
-			this.SendPropertyChanging();
-			entity.InventoryPrice = this;
-		}
-		
-		private void detach_InventorySpecialPrices(InventorySpecialPrice entity)
-		{
-			this.SendPropertyChanging();
-			entity.InventoryPrice = null;
-		}
-		
-		private void attach_InventoryTierPrices(InventoryTierPrice entity)
-		{
-			this.SendPropertyChanging();
-			entity.InventoryPrice = this;
-		}
-		
-		private void detach_InventoryTierPrices(InventoryTierPrice entity)
-		{
-			this.SendPropertyChanging();
-			entity.InventoryPrice = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InventoryListPrice")]
-	public partial class InventoryListPrice : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _InventoryPriceID;
-		
-		private decimal _ListPrice;
-		
-		private System.DateTime _StartDate;
-		
-		private System.DateTime _DateCreated;
-		
-		private string _CreatedBy;
-		
-		private System.DateTime _DateModified;
-		
-		private string _ModifiedBy;
-		
-		private EntityRef<InventoryPrice> _InventoryPrice;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnInventoryPriceIDChanging(int value);
-    partial void OnInventoryPriceIDChanged();
-    partial void OnListPriceChanging(decimal value);
-    partial void OnListPriceChanged();
-    partial void OnStartDateChanging(System.DateTime value);
-    partial void OnStartDateChanged();
-    partial void OnDateCreatedChanging(System.DateTime value);
-    partial void OnDateCreatedChanged();
-    partial void OnCreatedByChanging(string value);
-    partial void OnCreatedByChanged();
-    partial void OnDateModifiedChanging(System.DateTime value);
-    partial void OnDateModifiedChanged();
-    partial void OnModifiedByChanging(string value);
-    partial void OnModifiedByChanged();
-    #endregion
-		
-		public InventoryListPrice()
-		{
-			this._InventoryPrice = default(EntityRef<InventoryPrice>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryPriceID", DbType="Int NOT NULL")]
-		public int InventoryPriceID
-		{
-			get
-			{
-				return this._InventoryPriceID;
-			}
-			set
-			{
-				if ((this._InventoryPriceID != value))
-				{
-					if (this._InventoryPrice.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnInventoryPriceIDChanging(value);
-					this.SendPropertyChanging();
-					this._InventoryPriceID = value;
-					this.SendPropertyChanged("InventoryPriceID");
-					this.OnInventoryPriceIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListPrice", DbType="Decimal(20,6) NOT NULL")]
-		public decimal ListPrice
-		{
-			get
-			{
-				return this._ListPrice;
-			}
-			set
-			{
-				if ((this._ListPrice != value))
-				{
-					this.OnListPriceChanging(value);
-					this.SendPropertyChanging();
-					this._ListPrice = value;
-					this.SendPropertyChanged("ListPrice");
-					this.OnListPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date NOT NULL")]
-		public System.DateTime StartDate
-		{
-			get
-			{
-				return this._StartDate;
-			}
-			set
-			{
-				if ((this._StartDate != value))
-				{
-					this.OnStartDateChanging(value);
-					this.SendPropertyChanging();
-					this._StartDate = value;
-					this.SendPropertyChanged("StartDate");
-					this.OnStartDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime2 NOT NULL")]
-		public System.DateTime DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this.OnDateCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCreated = value;
-					this.SendPropertyChanged("DateCreated");
-					this.OnDateCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string CreatedBy
-		{
-			get
-			{
-				return this._CreatedBy;
-			}
-			set
-			{
-				if ((this._CreatedBy != value))
-				{
-					this.OnCreatedByChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedBy = value;
-					this.SendPropertyChanged("CreatedBy");
-					this.OnCreatedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime2 NOT NULL")]
-		public System.DateTime DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this.OnDateModifiedChanging(value);
-					this.SendPropertyChanging();
-					this._DateModified = value;
-					this.SendPropertyChanged("DateModified");
-					this.OnDateModifiedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ModifiedBy
-		{
-			get
-			{
-				return this._ModifiedBy;
-			}
-			set
-			{
-				if ((this._ModifiedBy != value))
-				{
-					this.OnModifiedByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedBy = value;
-					this.SendPropertyChanged("ModifiedBy");
-					this.OnModifiedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InventoryPrice_InventoryListPrice", Storage="_InventoryPrice", ThisKey="InventoryPriceID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public InventoryPrice InventoryPrice
-		{
-			get
-			{
-				return this._InventoryPrice.Entity;
-			}
-			set
-			{
-				InventoryPrice previousValue = this._InventoryPrice.Entity;
-				if (((previousValue != value) 
-							|| (this._InventoryPrice.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._InventoryPrice.Entity = null;
-						previousValue.InventoryListPrices.Remove(this);
-					}
-					this._InventoryPrice.Entity = value;
-					if ((value != null))
-					{
-						value.InventoryListPrices.Add(this);
-						this._InventoryPriceID = value.ID;
-					}
-					else
-					{
-						this._InventoryPriceID = default(int);
-					}
-					this.SendPropertyChanged("InventoryPrice");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InventorySpecialPrice")]
-	public partial class InventorySpecialPrice : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _InventoryPriceID;
-		
-		private decimal _SpecialPrice;
-		
-		private System.DateTime _StartDate;
-		
-		private System.DateTime _EndDate;
-		
-		private System.DateTime _DateCreated;
-		
-		private string _CreatedBy;
-		
-		private System.DateTime _DateModified;
-		
-		private string _ModifiedBy;
-		
-		private EntityRef<InventoryPrice> _InventoryPrice;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnInventoryPriceIDChanging(int value);
-    partial void OnInventoryPriceIDChanged();
-    partial void OnSpecialPriceChanging(decimal value);
-    partial void OnSpecialPriceChanged();
-    partial void OnStartDateChanging(System.DateTime value);
-    partial void OnStartDateChanged();
-    partial void OnEndDateChanging(System.DateTime value);
-    partial void OnEndDateChanged();
-    partial void OnDateCreatedChanging(System.DateTime value);
-    partial void OnDateCreatedChanged();
-    partial void OnCreatedByChanging(string value);
-    partial void OnCreatedByChanged();
-    partial void OnDateModifiedChanging(System.DateTime value);
-    partial void OnDateModifiedChanged();
-    partial void OnModifiedByChanging(string value);
-    partial void OnModifiedByChanged();
-    #endregion
-		
-		public InventorySpecialPrice()
-		{
-			this._InventoryPrice = default(EntityRef<InventoryPrice>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryPriceID", DbType="Int NOT NULL")]
-		public int InventoryPriceID
-		{
-			get
-			{
-				return this._InventoryPriceID;
-			}
-			set
-			{
-				if ((this._InventoryPriceID != value))
-				{
-					if (this._InventoryPrice.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnInventoryPriceIDChanging(value);
-					this.SendPropertyChanging();
-					this._InventoryPriceID = value;
-					this.SendPropertyChanged("InventoryPriceID");
-					this.OnInventoryPriceIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SpecialPrice", DbType="Decimal(20,6) NOT NULL")]
-		public decimal SpecialPrice
-		{
-			get
-			{
-				return this._SpecialPrice;
-			}
-			set
-			{
-				if ((this._SpecialPrice != value))
-				{
-					this.OnSpecialPriceChanging(value);
-					this.SendPropertyChanging();
-					this._SpecialPrice = value;
-					this.SendPropertyChanged("SpecialPrice");
-					this.OnSpecialPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date NOT NULL")]
-		public System.DateTime StartDate
-		{
-			get
-			{
-				return this._StartDate;
-			}
-			set
-			{
-				if ((this._StartDate != value))
-				{
-					this.OnStartDateChanging(value);
-					this.SendPropertyChanging();
-					this._StartDate = value;
-					this.SendPropertyChanged("StartDate");
-					this.OnStartDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="Date NOT NULL")]
-		public System.DateTime EndDate
-		{
-			get
-			{
-				return this._EndDate;
-			}
-			set
-			{
-				if ((this._EndDate != value))
-				{
-					this.OnEndDateChanging(value);
-					this.SendPropertyChanging();
-					this._EndDate = value;
-					this.SendPropertyChanged("EndDate");
-					this.OnEndDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime2 NOT NULL")]
-		public System.DateTime DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this.OnDateCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCreated = value;
-					this.SendPropertyChanged("DateCreated");
-					this.OnDateCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string CreatedBy
-		{
-			get
-			{
-				return this._CreatedBy;
-			}
-			set
-			{
-				if ((this._CreatedBy != value))
-				{
-					this.OnCreatedByChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedBy = value;
-					this.SendPropertyChanged("CreatedBy");
-					this.OnCreatedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime2 NOT NULL")]
-		public System.DateTime DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this.OnDateModifiedChanging(value);
-					this.SendPropertyChanging();
-					this._DateModified = value;
-					this.SendPropertyChanged("DateModified");
-					this.OnDateModifiedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ModifiedBy
-		{
-			get
-			{
-				return this._ModifiedBy;
-			}
-			set
-			{
-				if ((this._ModifiedBy != value))
-				{
-					this.OnModifiedByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedBy = value;
-					this.SendPropertyChanged("ModifiedBy");
-					this.OnModifiedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InventoryPrice_InventorySpecialPrice", Storage="_InventoryPrice", ThisKey="InventoryPriceID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public InventoryPrice InventoryPrice
-		{
-			get
-			{
-				return this._InventoryPrice.Entity;
-			}
-			set
-			{
-				InventoryPrice previousValue = this._InventoryPrice.Entity;
-				if (((previousValue != value) 
-							|| (this._InventoryPrice.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._InventoryPrice.Entity = null;
-						previousValue.InventorySpecialPrices.Remove(this);
-					}
-					this._InventoryPrice.Entity = value;
-					if ((value != null))
-					{
-						value.InventorySpecialPrices.Add(this);
-						this._InventoryPriceID = value.ID;
-					}
-					else
-					{
-						this._InventoryPriceID = default(int);
-					}
-					this.SendPropertyChanged("InventoryPrice");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InventoryTierPrice")]
-	public partial class InventoryTierPrice : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _InventoryPriceID;
-		
-		private decimal _QuantityBreak;
-		
-		private decimal _MarkupPercentage;
-		
-		private decimal _MarkupAmount;
-		
-		private decimal _UnitPrice;
-		
-		private System.DateTime _StartDate;
-		
-		private System.DateTime _DateCreated;
-		
-		private string _CreatedBy;
-		
-		private System.DateTime _DateModified;
-		
-		private string _ModifiedBy;
-		
-		private EntityRef<InventoryPrice> _InventoryPrice;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnInventoryPriceIDChanging(int value);
-    partial void OnInventoryPriceIDChanged();
-    partial void OnQuantityBreakChanging(decimal value);
-    partial void OnQuantityBreakChanged();
-    partial void OnMarkupPercentageChanging(decimal value);
-    partial void OnMarkupPercentageChanged();
-    partial void OnMarkupAmountChanging(decimal value);
-    partial void OnMarkupAmountChanged();
-    partial void OnUnitPriceChanging(decimal value);
-    partial void OnUnitPriceChanged();
-    partial void OnStartDateChanging(System.DateTime value);
-    partial void OnStartDateChanged();
-    partial void OnDateCreatedChanging(System.DateTime value);
-    partial void OnDateCreatedChanged();
-    partial void OnCreatedByChanging(string value);
-    partial void OnCreatedByChanged();
-    partial void OnDateModifiedChanging(System.DateTime value);
-    partial void OnDateModifiedChanged();
-    partial void OnModifiedByChanging(string value);
-    partial void OnModifiedByChanged();
-    #endregion
-		
-		public InventoryTierPrice()
-		{
-			this._InventoryPrice = default(EntityRef<InventoryPrice>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryPriceID", DbType="Int NOT NULL")]
-		public int InventoryPriceID
-		{
-			get
-			{
-				return this._InventoryPriceID;
-			}
-			set
-			{
-				if ((this._InventoryPriceID != value))
-				{
-					if (this._InventoryPrice.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnInventoryPriceIDChanging(value);
-					this.SendPropertyChanging();
-					this._InventoryPriceID = value;
-					this.SendPropertyChanged("InventoryPriceID");
-					this.OnInventoryPriceIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuantityBreak", DbType="Decimal(20,6) NOT NULL")]
-		public decimal QuantityBreak
-		{
-			get
-			{
-				return this._QuantityBreak;
-			}
-			set
-			{
-				if ((this._QuantityBreak != value))
-				{
-					this.OnQuantityBreakChanging(value);
-					this.SendPropertyChanging();
-					this._QuantityBreak = value;
-					this.SendPropertyChanged("QuantityBreak");
-					this.OnQuantityBreakChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MarkupPercentage", DbType="Decimal(7,4) NOT NULL")]
-		public decimal MarkupPercentage
-		{
-			get
-			{
-				return this._MarkupPercentage;
-			}
-			set
-			{
-				if ((this._MarkupPercentage != value))
-				{
-					this.OnMarkupPercentageChanging(value);
-					this.SendPropertyChanging();
-					this._MarkupPercentage = value;
-					this.SendPropertyChanged("MarkupPercentage");
-					this.OnMarkupPercentageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MarkupAmount", DbType="Decimal(20,6) NOT NULL")]
-		public decimal MarkupAmount
-		{
-			get
-			{
-				return this._MarkupAmount;
-			}
-			set
-			{
-				if ((this._MarkupAmount != value))
-				{
-					this.OnMarkupAmountChanging(value);
-					this.SendPropertyChanging();
-					this._MarkupAmount = value;
-					this.SendPropertyChanged("MarkupAmount");
-					this.OnMarkupAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitPrice", DbType="Decimal(20,6) NOT NULL")]
-		public decimal UnitPrice
-		{
-			get
-			{
-				return this._UnitPrice;
-			}
-			set
-			{
-				if ((this._UnitPrice != value))
-				{
-					this.OnUnitPriceChanging(value);
-					this.SendPropertyChanging();
-					this._UnitPrice = value;
-					this.SendPropertyChanged("UnitPrice");
-					this.OnUnitPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date NOT NULL")]
-		public System.DateTime StartDate
-		{
-			get
-			{
-				return this._StartDate;
-			}
-			set
-			{
-				if ((this._StartDate != value))
-				{
-					this.OnStartDateChanging(value);
-					this.SendPropertyChanging();
-					this._StartDate = value;
-					this.SendPropertyChanged("StartDate");
-					this.OnStartDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime2 NOT NULL")]
-		public System.DateTime DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this.OnDateCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCreated = value;
-					this.SendPropertyChanged("DateCreated");
-					this.OnDateCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string CreatedBy
-		{
-			get
-			{
-				return this._CreatedBy;
-			}
-			set
-			{
-				if ((this._CreatedBy != value))
-				{
-					this.OnCreatedByChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedBy = value;
-					this.SendPropertyChanged("CreatedBy");
-					this.OnCreatedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime2 NOT NULL")]
-		public System.DateTime DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this.OnDateModifiedChanging(value);
-					this.SendPropertyChanging();
-					this._DateModified = value;
-					this.SendPropertyChanged("DateModified");
-					this.OnDateModifiedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ModifiedBy
-		{
-			get
-			{
-				return this._ModifiedBy;
-			}
-			set
-			{
-				if ((this._ModifiedBy != value))
-				{
-					this.OnModifiedByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedBy = value;
-					this.SendPropertyChanged("ModifiedBy");
-					this.OnModifiedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InventoryPrice_InventoryTierPrice", Storage="_InventoryPrice", ThisKey="InventoryPriceID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public InventoryPrice InventoryPrice
-		{
-			get
-			{
-				return this._InventoryPrice.Entity;
-			}
-			set
-			{
-				InventoryPrice previousValue = this._InventoryPrice.Entity;
-				if (((previousValue != value) 
-							|| (this._InventoryPrice.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._InventoryPrice.Entity = null;
-						previousValue.InventoryTierPrices.Remove(this);
-					}
-					this._InventoryPrice.Entity = value;
-					if ((value != null))
-					{
-						value.InventoryTierPrices.Add(this);
-						this._InventoryPriceID = value.ID;
-					}
-					else
-					{
-						this._InventoryPriceID = default(int);
-					}
-					this.SendPropertyChanged("InventoryPrice");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UnitOfMeasure")]
 	public partial class UnitOfMeasure : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -6818,325 +6755,6 @@ namespace AccountMateWebOrder.Data
 		{
 			this.SendPropertyChanging();
 			entity.UnitOfMeasure = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InventoryAttribute")]
-	public partial class InventoryAttribute : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _InventoryID;
-		
-		private int _AttributeID;
-		
-		private int _MiscCodeID;
-		
-		private string _Description;
-		
-		private string _ShortDescription;
-		
-		private System.DateTime _DateCreated;
-		
-		private string _CreatedBy;
-		
-		private System.DateTime _DateModified;
-		
-		private string _ModifiedBy;
-		
-		private EntityRef<Inventory> _Inventory;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnInventoryIDChanging(int value);
-    partial void OnInventoryIDChanged();
-    partial void OnAttributeIDChanging(int value);
-    partial void OnAttributeIDChanged();
-    partial void OnMiscCodeIDChanging(int value);
-    partial void OnMiscCodeIDChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    partial void OnShortDescriptionChanging(string value);
-    partial void OnShortDescriptionChanged();
-    partial void OnDateCreatedChanging(System.DateTime value);
-    partial void OnDateCreatedChanged();
-    partial void OnCreatedByChanging(string value);
-    partial void OnCreatedByChanged();
-    partial void OnDateModifiedChanging(System.DateTime value);
-    partial void OnDateModifiedChanged();
-    partial void OnModifiedByChanging(string value);
-    partial void OnModifiedByChanged();
-    #endregion
-		
-		public InventoryAttribute()
-		{
-			this._Inventory = default(EntityRef<Inventory>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryID", DbType="Int NOT NULL")]
-		public int InventoryID
-		{
-			get
-			{
-				return this._InventoryID;
-			}
-			set
-			{
-				if ((this._InventoryID != value))
-				{
-					if (this._Inventory.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnInventoryIDChanging(value);
-					this.SendPropertyChanging();
-					this._InventoryID = value;
-					this.SendPropertyChanged("InventoryID");
-					this.OnInventoryIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AttributeID", DbType="Int NOT NULL")]
-		public int AttributeID
-		{
-			get
-			{
-				return this._AttributeID;
-			}
-			set
-			{
-				if ((this._AttributeID != value))
-				{
-					this.OnAttributeIDChanging(value);
-					this.SendPropertyChanging();
-					this._AttributeID = value;
-					this.SendPropertyChanged("AttributeID");
-					this.OnAttributeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MiscCodeID", DbType="Int NOT NULL")]
-		public int MiscCodeID
-		{
-			get
-			{
-				return this._MiscCodeID;
-			}
-			set
-			{
-				if ((this._MiscCodeID != value))
-				{
-					this.OnMiscCodeIDChanging(value);
-					this.SendPropertyChanging();
-					this._MiscCodeID = value;
-					this.SendPropertyChanged("MiscCodeID");
-					this.OnMiscCodeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShortDescription", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
-		public string ShortDescription
-		{
-			get
-			{
-				return this._ShortDescription;
-			}
-			set
-			{
-				if ((this._ShortDescription != value))
-				{
-					this.OnShortDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._ShortDescription = value;
-					this.SendPropertyChanged("ShortDescription");
-					this.OnShortDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime2 NOT NULL")]
-		public System.DateTime DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this.OnDateCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCreated = value;
-					this.SendPropertyChanged("DateCreated");
-					this.OnDateCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string CreatedBy
-		{
-			get
-			{
-				return this._CreatedBy;
-			}
-			set
-			{
-				if ((this._CreatedBy != value))
-				{
-					this.OnCreatedByChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedBy = value;
-					this.SendPropertyChanged("CreatedBy");
-					this.OnCreatedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime2 NOT NULL")]
-		public System.DateTime DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this.OnDateModifiedChanging(value);
-					this.SendPropertyChanging();
-					this._DateModified = value;
-					this.SendPropertyChanged("DateModified");
-					this.OnDateModifiedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ModifiedBy
-		{
-			get
-			{
-				return this._ModifiedBy;
-			}
-			set
-			{
-				if ((this._ModifiedBy != value))
-				{
-					this.OnModifiedByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedBy = value;
-					this.SendPropertyChanged("ModifiedBy");
-					this.OnModifiedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Inventory_InventoryAttribute", Storage="_Inventory", ThisKey="InventoryID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Inventory Inventory
-		{
-			get
-			{
-				return this._Inventory.Entity;
-			}
-			set
-			{
-				Inventory previousValue = this._Inventory.Entity;
-				if (((previousValue != value) 
-							|| (this._Inventory.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Inventory.Entity = null;
-						previousValue.InventoryAttributes.Remove(this);
-					}
-					this._Inventory.Entity = value;
-					if ((value != null))
-					{
-						value.InventoryAttributes.Add(this);
-						this._InventoryID = value.ID;
-					}
-					else
-					{
-						this._InventoryID = default(int);
-					}
-					this.SendPropertyChanged("Inventory");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }
