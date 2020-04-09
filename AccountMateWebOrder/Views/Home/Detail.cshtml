@@ -106,8 +106,9 @@
                             <a href="#" id="addOrder" class="btn btn-md btn-primary text-uppercase"> Buy now </a>
                             <a href="#" id="addToCart" class="btn btn-md btn-outline-primary text-uppercase"> <i class="fa fa-shopping-cart"></i> Add to cart </a>
                         </div>
+
                         <div class="col-4">
-                            <a href="@Url.Action("Index","Home")" class="btn btn-light pull-right" style="margin-top: 10px"><i class="fa fa-arrow-left"></i> Back</a>
+                            <a onclick="history.go(-1); return false;" href="#" class="btn btn-light pull-right" style="margin-top: 10px"><i class="fa fa-arrow-left"></i> Back</a>
                         </div>
                     </div>
                 </article>

@@ -48,7 +48,7 @@
             <form class="card card-sm">
                 <div class="card-body row no-gutters align-items-center">
                     <div class="col">
-                        @Html.TextBox("Search", ViewBag.search as string, new { @class = "form-control form-control-md form-control-borderless", type = "search", placeholder = "Search products" , id="logo"})
+                        @Html.TextBox("Search", ViewBag.search as string, new { @class = "form-control form-control-md form-control-borderless", type = "search", placeholder = "Search products", id = "logo" })
                         <hr class="hr-no-border" />
                     </div>
                     <div class="col-auto">
@@ -60,83 +60,92 @@
     </div>
 }
 
-<nav aria-label="Page navigation" style="padding-top: 20px;">
-    <ul class="pagination justify-content-md-center">
-        <li class="page-item">
-            <a class="page-link" href="@Url.Action("Index", new { Page = Model.Page, Search = ViewBag.Search, Button = "prev" })" aria-label="Previous">
-                <span aria-hidden="true">Prev</span>
-            </a>
-        </li>
-        @for (int i = Model.StartPage; i <= Model.EndPage; i++)
-        {
-            <li class="@(i == Model.Page ? "page-item active" : "page-item")">
-                <a class="page-link" href="@Url.Action("Index", new { Page = i, Search = ViewBag.Search })">@i</a>
+@if (Model.PageCount == 0)
+{
+    <div style="padding: 5px ,10px ,10px ,5px; text-align:center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+        Nothing found...
+    </div>
+}
+else
+{
+    <nav aria-label="Page navigation" style="padding-top: 20px;">
+        <ul class="pagination justify-content-md-center">
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { Page = Model.Page, Search = ViewBag.Search, Button = "prev" })" aria-label="Previous">
+                    <span aria-hidden="true">Prev</span>
+                </a>
             </li>
-        }
-        <li class="page-item">
-            <a class="page-link" href="@Url.Action("Index", new { Page = Model.Page, Search = ViewBag.Search, Button = "next" })" aria-label="Next">
-                <span aria-hidden="true">Next</span>
-            </a>
-        </li>
-    </ul>
-</nav>
+            @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+            {
+                <li class="@(i == Model.Page ? "page-item active" : "page-item")">
+                    <a class="page-link" href="@Url.Action("Index", new { Page = i, Search = ViewBag.Search })">@i</a>
+                </li>
+            }
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { Page = Model.Page, Search = ViewBag.Search, Button = "next" })" aria-label="Next">
+                    <span aria-hidden="true">Next</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-<div class="row">
-    @foreach (var prod in ViewBag.AllActiveInventories)
-    {
-        <div class="col-md-3">
-            <figure class="card card-product">
-                <div class="img-wrap">
-                    <a href="@Url.Action("Detail", "Home", new { id = prod.Id })"><img class="img-thumbnail no-border" src="@Url.Content("~/Content/Images/aerochair-a1.jpg")" /></a>
-                    <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
-                </div>
-                <figcaption class="info-wrap">
-                    <h6 class="title text-dots"><a href="">@prod.ItemCode</a></h6>
-                    <div>@prod.Description</div>
-                    <div class="action-wrap">
-                        <a href="@Url.Action("Detail", "Home", new { id = prod.Id })" class="float-right"><i class="fa fa-hand-pointer-o"></i></a>
-                        <div class="price-wrap h5">
-                            <span class="price-new">$@string.Format("{0:N2}", prod.ListPrice)</span>
-
-                            @{
-                                Random rand = new Random();
-                                int limit = (int)prod.ListPrice;
-
-                                if (limit == 0)
-                                {
-                                    limit = 1;
-                                }
-
-                                decimal newLimit = (decimal)rand.Next(limit, limit + 50);
-                                string oldPrice = string.Format("{0:N2}", newLimit);
-
-                                <del class="price-old">$@oldPrice</del>
-                            }
-                        </div>
+    <div class="row">
+        @foreach (var prod in ViewBag.AllActiveInventories)
+        {
+            <div class="col-md-3">
+                <figure class="card card-product">
+                    <div class="img-wrap">
+                        <a href="@Url.Action("Detail", "Home", new { id = prod.Id })"><img class="img-thumbnail no-border" src="@Url.Content("~/Content/Images/aerochair-a1.jpg")" /></a>
+                        <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
                     </div>
-                </figcaption>
-            </figure>
-        </div>
-    }
-</div>
+                    <figcaption class="info-wrap">
+                        <h6 class="title text-dots"><a href="">@prod.ItemCode</a></h6>
+                        <div>@prod.Description</div>
+                        <div class="action-wrap">
+                            <a href="@Url.Action("Detail", "Home", new { id = prod.Id })" class="float-right"><i class="fa fa-hand-pointer-o"></i></a>
+                            <div class="price-wrap h5">
+                                <span class="price-new">$@string.Format("{0:N2}", prod.ListPrice)</span>
 
-<nav aria-label="Page navigation">
-    <ul class="pagination justify-content-md-center">
-        <li class="page-item">
-            <a class="page-link" href="@Url.Action("Index", new { Page = Model.Page, Search = ViewBag.Search, Button = "prev" })" aria-label="Previous">
-                <span aria-hidden="true">Prev</span>
-            </a>
-        </li>
-        @for (int i = Model.StartPage; i <= Model.EndPage; i++)
-        {
-            <li class="@(i == Model.Page ? "page-item active" : "page-item")">
-                <a class="page-link" href="@Url.Action("Index", new { Page = i, Search = ViewBag.Search })">@i</a>
-            </li>
+                                @{
+                                    Random rand = new Random();
+                                    int limit = (int)prod.ListPrice;
+
+                                    if (limit == 0)
+                                    {
+                                        limit = 1;
+                                    }
+
+                                    decimal newLimit = (decimal)rand.Next(limit, limit + 50);
+                                    string oldPrice = string.Format("{0:N2}", newLimit);
+
+                                    <del class="price-old">$@oldPrice</del>
+                                }
+                            </div>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
         }
-        <li class="page-item">
-            <a class="page-link" href="@Url.Action("Index", new { Page = Model.Page, Search = ViewBag.Search, Button = "next" })" aria-label="Next">
-                <span aria-hidden="true">Next</span>
-            </a>
-        </li>
-    </ul>
-</nav>
+    </div>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-md-center">
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { Page = Model.Page, Search = ViewBag.Search, Button = "prev" })" aria-label="Previous">
+                    <span aria-hidden="true">Prev</span>
+                </a>
+            </li>
+            @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+            {
+                <li class="@(i == Model.Page ? "page-item active" : "page-item")">
+                    <a class="page-link" href="@Url.Action("Index", new { Page = i, Search = ViewBag.Search })">@i</a>
+                </li>
+            }
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { Page = Model.Page, Search = ViewBag.Search, Button = "next" })" aria-label="Next">
+                    <span aria-hidden="true">Next</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+}
