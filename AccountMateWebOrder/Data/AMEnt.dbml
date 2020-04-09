@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AM.Sample.Co" Class="AMEntDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-VQRO7RO\SQL2K17_CSAS;Initial Catalog=AM.Sample.Co;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="AM_Sample_CoConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=EWCENIZA\SQLSERV17;Initial Catalog=AM.Sample.Co;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="AM_Sample_CoConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Inventory" Member="Inventories">
     <Type Name="Inventory">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -102,92 +102,12 @@
       <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
       <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Inventory_InventoryImage" Member="InventoryImage" ThisKey="ID" OtherKey="ID" Type="InventoryImage" Cardinality="One" />
-      <Association Name="Inventory_InventoryPrice" Member="InventoryPrices" ThisKey="ID" OtherKey="InventoryID" Type="InventoryPrice" />
       <Association Name="Inventory_InventoryWarehouse" Member="InventoryWarehouses" ThisKey="ID" OtherKey="InventoryID" Type="InventoryWarehouse" />
+      <Association Name="Inventory_InventoryPrice" Member="InventoryPrices" ThisKey="ID" OtherKey="InventoryID" Type="InventoryPrice" />
       <Association Name="UnitOfMeasure_Inventory" Member="UnitOfMeasure" ThisKey="PurchaseUOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
       <Association Name="UnitOfMeasure_Inventory1" Member="UnitOfMeasure1" ThisKey="SaleUOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
       <Association Name="UnitOfMeasure_Inventory2" Member="UnitOfMeasure2" ThisKey="StockUOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
       <Association Name="UnitOfMeasure_Inventory3" Member="UnitOfMeasure3" ThisKey="StorageUOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.InventoryImage" Member="InventoryImages">
-    <Type Name="InventoryImage">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="URL" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="IsAlwaysGrabFromURL" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
-      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Inventory_InventoryImage" Member="Inventory" ThisKey="ID" OtherKey="ID" Type="Inventory" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.InventoryListPrice" Member="InventoryListPrices">
-    <Type Name="InventoryListPrice">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="InventoryPriceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ListPrice" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
-      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="InventoryPrice_InventoryListPrice" Member="InventoryPrice" ThisKey="InventoryPriceID" OtherKey="ID" Type="InventoryPrice" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.InventoryPrice" Member="InventoryPrices">
-    <Type Name="InventoryPrice">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="InventoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="InventorySpecID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UOMID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CurrencyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PriceDecimalPlaces" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
-      <Column Name="MinimumPrice" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
-      <Column Name="CustomerPriceGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PriceType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
-      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="InventoryPrice_InventoryListPrice" Member="InventoryListPrices" ThisKey="ID" OtherKey="InventoryPriceID" Type="InventoryListPrice" />
-      <Association Name="Inventory_InventoryPrice" Member="Inventory" ThisKey="InventoryID" OtherKey="ID" Type="Inventory" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="UnitOfMeasure_InventoryPrice" Member="UnitOfMeasure" ThisKey="UOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.InventoryWarehouse" Member="InventoryWarehouses">
-    <Type Name="InventoryWarehouse">
-      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="InventoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="WarehouseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="InventorySpecID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="OnhandQty" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
-      <Column Name="AverageCost" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="SafetyStockQty" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
-      <Column Name="ReorderPoint" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
-      <Column Name="ReorderQty" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
-      <Column Name="ManufacturingLeadDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RevenueCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="InventoryAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="InTransitInventoryAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="InterimInventoryAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="InventoryVarianceAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CostVarianceAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ContractCostAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ContractObligationAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ContractDiscountAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CurrentCost" Type="System.Decimal" DbType="Decimal(20,6)" CanBeNull="true" />
-      <Column Name="StandardCost" Type="System.Decimal" DbType="Decimal(20,6)" CanBeNull="true" />
-      <Column Name="ReturnCost" Type="System.Decimal" DbType="Decimal(20,6)" CanBeNull="true" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
-      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Inventory_InventoryWarehouse" Member="Inventory" ThisKey="InventoryID" OtherKey="ID" Type="Inventory" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Customer" Member="Customers">
@@ -246,6 +166,104 @@
       <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="Customer_Customer" Member="Customers" ThisKey="ID" OtherKey="ParentCustomerID" Type="Customer" />
       <Association Name="Customer_Customer" Member="Customer1" ThisKey="ParentCustomerID" OtherKey="ID" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryWarehouse" Member="InventoryWarehouses">
+    <Type Name="InventoryWarehouse">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InventoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WarehouseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InventorySpecID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OnhandQty" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="AverageCost" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="SafetyStockQty" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="ReorderPoint" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="ReorderQty" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="ManufacturingLeadDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RevenueCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InventoryAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InTransitInventoryAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InterimInventoryAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InventoryVarianceAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CostVarianceAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractCostAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractObligationAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractDiscountAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrentCost" Type="System.Decimal" DbType="Decimal(20,6)" CanBeNull="true" />
+      <Column Name="StandardCost" Type="System.Decimal" DbType="Decimal(20,6)" CanBeNull="true" />
+      <Column Name="ReturnCost" Type="System.Decimal" DbType="Decimal(20,6)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Inventory_InventoryWarehouse" Member="Inventory" ThisKey="InventoryID" OtherKey="ID" Type="Inventory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryPrice" Member="InventoryPrices">
+    <Type Name="InventoryPrice">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InventoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InventorySpecID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UOMID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PriceDecimalPlaces" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="MinimumPrice" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerPriceGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PriceType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="InventoryPrice_InventoryListPrice" Member="InventoryListPrices" ThisKey="ID" OtherKey="InventoryPriceID" Type="InventoryListPrice" />
+      <Association Name="InventoryPrice_InventorySpecialPrice" Member="InventorySpecialPrices" ThisKey="ID" OtherKey="InventoryPriceID" Type="InventorySpecialPrice" />
+      <Association Name="InventoryPrice_InventoryTierPrice" Member="InventoryTierPrices" ThisKey="ID" OtherKey="InventoryPriceID" Type="InventoryTierPrice" />
+      <Association Name="Inventory_InventoryPrice" Member="Inventory" ThisKey="InventoryID" OtherKey="ID" Type="Inventory" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="UnitOfMeasure_InventoryPrice" Member="UnitOfMeasure" ThisKey="UOMID" OtherKey="ID" Type="UnitOfMeasure" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryListPrice" Member="InventoryListPrices">
+    <Type Name="InventoryListPrice">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InventoryPriceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ListPrice" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="InventoryPrice_InventoryListPrice" Member="InventoryPrice" ThisKey="InventoryPriceID" OtherKey="ID" Type="InventoryPrice" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventorySpecialPrice" Member="InventorySpecialPrices">
+    <Type Name="InventorySpecialPrice">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InventoryPriceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpecialPrice" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="InventoryPrice_InventorySpecialPrice" Member="InventoryPrice" ThisKey="InventoryPriceID" OtherKey="ID" Type="InventoryPrice" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryTierPrice" Member="InventoryTierPrices">
+    <Type Name="InventoryTierPrice">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InventoryPriceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuantityBreak" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="MarkupPercentage" Type="System.Decimal" DbType="Decimal(7,4) NOT NULL" CanBeNull="false" />
+      <Column Name="MarkupAmount" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(20,6) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="InventoryPrice_InventoryTierPrice" Member="InventoryPrice" ThisKey="InventoryPriceID" OtherKey="ID" Type="InventoryPrice" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.UnitOfMeasure" Member="UnitOfMeasures">
